@@ -1,0 +1,223 @@
+---
+title: Combined Loading
+description: How Clariti verifies anchor channels under combined tension and shear
+---
+
+Most real-world connections experience both tension and shear simultaneously. This page explains how Clariti checks the interaction between these load components.
+
+## Why Interaction Matters
+
+When tension and shear act together, the anchor capacity is reduced compared to either load acting alone:
+
+```
+Individual capacities:
+  Tension only:  NRd = 20 kN
+  Shear only:    VRd = 15 kN
+
+Under combined loading:
+  If NEd = 10 kN and VEd = 10 kN
+  Are we safe? We need to check interaction.
+```
+
+Even though 10 kN < 20 kN (tension OK) and 10 kN < 15 kN (shear OK), the combined effect may exceed capacity.
+
+## Interaction Equations
+
+EN 1992-4 provides interaction equations depending on the failure mode being checked.
+
+### Steel Failure Interaction
+
+For steel failure (ductile mode):
+
+```
+(NEd/NRd,s)² + (VEd/VRd,s)² ≤ 1.0
+```
+
+This is a circular interaction — the most generous form.
+
+### Concrete Failure Interaction
+
+For concrete failure modes (cone, edge, pryout):
+
+```
+(NEd/NRd)^α + (VEd/VRd)^α ≤ 1.0
+
+Where:
+  α = 1.5 for anchor channels (EN 1992-4)
+```
+
+### Linear Interaction (Conservative)
+
+For simplified checking:
+
+```
+NEd/NRd + VEd/VRd ≤ 1.2
+```
+
+This is the most conservative approach and always acceptable.
+
+## Interaction Diagrams
+
+The interaction equations define curves (or surfaces) in N-V space:
+
+```
+        N/NRd
+          │
+     1.0 ─┼─────────╮ ← Circular (α=2, steel)
+          │          ╲
+          │           ╲
+          │            ╲ ← α=1.5 (concrete)
+          │             ╲
+          │              ╲ ← Linear (α=1)
+          │               ╲
+     0.0 ─┼────────────────┼─── V/VRd
+          0              1.0
+```
+
+Points inside the curve: Design is adequate
+Points on the curve: Utilization = 100%
+Points outside: Design fails
+
+## Which Mode to Check
+
+Interaction must be checked for the governing failure modes in each direction:
+
+| Tension Mode | Shear Mode | Check Interaction |
+|--------------|------------|-------------------|
+| Concrete cone | Concrete edge | Yes (α = 1.5) |
+| Steel | Steel | Yes (α = 2) |
+| Concrete cone | Pryout | Yes (α = 1.5) |
+| Pullout | Steel | Yes (mixed) |
+
+For mixed modes (e.g., concrete in tension, steel in shear), Clariti uses the more conservative interaction.
+
+## Calculation Process
+
+Clariti performs interaction checks as follows:
+
+```
+1. Calculate all tension utilizations
+   ηN,steel = NEd / NRd,s
+   ηN,cone  = NEd / NRd,c
+   ηN,pull  = NEd / NRd,p
+   etc.
+
+2. Calculate all shear utilizations
+   ηV,steel = VEd / VRd,s
+   ηV,edge  = VEd / VRd,c
+   ηV,pry   = VEd / VRd,cp
+
+3. Find governing modes
+   ηN,gov = max(ηN,steel, ηN,cone, ηN,pull, ...)
+   ηV,gov = max(ηV,steel, ηV,edge, ηV,pry)
+
+4. Check interaction for governing combination
+   ηcombined = ηN,gov^α + ηV,gov^α
+
+5. Also check other critical combinations
+   (e.g., steel-steel, cone-edge)
+```
+
+## Example Calculation
+
+Given:
+- N<sub>Ed</sub> = 12 kN
+- V<sub>Ed</sub> = 8 kN
+- N<sub>Rd,c</sub> = 20 kN (concrete cone governs tension)
+- V<sub>Rd,c</sub> = 15 kN (concrete edge governs shear)
+
+Check interaction (α = 1.5):
+
+```
+Tension utilization:
+  ηN = 12/20 = 0.60
+
+Shear utilization:
+  ηV = 8/15 = 0.53
+
+Combined utilization:
+  ηcombined = 0.60^1.5 + 0.53^1.5
+  ηcombined = 0.465 + 0.386
+  ηcombined = 0.85 ≤ 1.0 ✓
+```
+
+Design is adequate with 85% combined utilization.
+
+<Tip>
+  Even if individual utilizations are moderate (60%, 53%), the combined
+  utilization can approach limits (85%). Always check interaction for
+  combined loading cases.
+</Tip>
+
+## Special Cases
+
+### Tension-Only Connections
+
+If V<sub>Ed</sub> = 0:
+```
+ηcombined = ηN^α + 0 = ηN^α
+```
+
+For α = 1.5, this gives slightly lower utilization than the tension-only check. Clariti uses the governing (higher) value.
+
+### Shear-Only Connections
+
+If N<sub>Ed</sub> = 0:
+```
+ηcombined = 0 + ηV^α = ηV^α
+```
+
+Similarly, shear-only connections use the direct shear utilization.
+
+### Compression + Shear
+
+When the axial load is compressive (toward concrete):
+
+- No tension failure modes apply
+- Compression improves shear capacity (friction)
+- Clariti may credit friction per EN 1992-4
+
+<Note>
+  Friction credit requires verification that compression is permanent
+  and reliable. Conservative practice is to ignore friction benefit.
+</Note>
+
+## Multiple Load Cases
+
+Real connections may have multiple load combinations:
+
+| Load Case | N<sub>Ed</sub> | V<sub>Ed</sub> |
+|-----------|----------------|----------------|
+| LC1: Dead + Live | 10 kN | 5 kN |
+| LC2: Dead + Wind | 15 kN | 12 kN |
+| LC3: Dead + Seismic | 8 kN | 18 kN |
+
+Clariti checks interaction for each load case independently:
+
+```
+LC1: ηcombined = 0.50^1.5 + 0.33^1.5 = 0.54
+LC2: ηcombined = 0.75^1.5 + 0.80^1.5 = 1.37 ✗ FAILS
+LC3: ηcombined = 0.40^1.5 + 1.20^1.5 = 1.57 ✗ FAILS
+```
+
+LC2 and LC3 fail — a larger channel or additional anchors needed.
+
+## In Clariti
+
+Combined loading verification displays:
+
+1. **Interaction diagram** — Visual plot showing design point
+2. **Combined utilization** — Overall pass/fail with percentage
+3. **Component breakdown** — N and V contributions
+4. **Governing combination** — Which mode pairing controls
+5. **Load case comparison** — Table showing all cases
+
+The interaction diagram updates in real-time as you adjust loads or select different products, helping you find adequate solutions quickly.
+
+## Key Takeaways
+
+- Always check interaction under combined loading
+- α = 1.5 for concrete modes, α = 2 for steel modes
+- Combined utilization can be high even with moderate individual utilizations
+- Check all load cases — different cases may govern
+- Compression can improve shear capacity via friction (use with caution)

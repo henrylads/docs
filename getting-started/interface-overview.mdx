@@ -1,0 +1,138 @@
+---
+title: Interface Overview
+description: Navigate the Clariti interface and understand each panel
+---
+
+This guide explains the main areas of the Clariti workspace and how to use them effectively.
+
+## Main Layout
+
+The Clariti workspace is divided into key areas:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  Project Name          Design │ Results              Close      │
+├───────────────────┬─────────────────────────────────────────────┤
+│                   │                                             │
+│  Input Panels     │         3D Visualization                    │
+│  (Left Sidebar)   │                               ┌───────────┐ │
+│                   │                               │Optimization│
+│  - Frame          │                               │ Complete   │
+│    Connection     │                               │           │ │
+│  - Loading        │                               │View Results│
+│  - Dimensions     │                               └───────────┘ │
+│  - Bracket        │                                             │
+│    Options        │                                             │
+│  - Fine Tuning    │                                             │
+│                   │                                             │
+├───────────────────┤     ┌─────────────────────────────────┐     │
+│ Run Optimization  │     │   ↑  ⟳  →  ⟳  ←  ↓  DWG STP 3DM │   │
+├───────────────────┤     └─────────────────────────────────┘     │
+│Design edits │ Chat│                                             │
+└───────────────────┴─────────────────────────────────────────────┘
+```
+
+## Top Navigation Bar
+
+The top bar provides:
+
+- **Project name** — Click to access project settings
+- **Design / Results tabs** — Switch between input mode and results view
+- **Close** — Return to the project list
+
+## Left Sidebar (Input Panels)
+
+The left sidebar contains collapsible input panels:
+
+### Frame Connection
+
+- **Frame Fixing Type** — Select connection type (e.g., Cast-in Channel)
+- **Slab Thickness** — Depth of concrete member (mm)
+- **Channel Type** — Filter by channel family (e.g., All Channels)
+
+### Loading
+
+- **Characteristic Load** — Applied load value (kN/m)
+- **Material Type** — Cladding material (e.g., Brick)
+
+### Dimensions
+
+- **Cavity Width** — Distance from structure face (mm)
+- **Run Length** — Length of the bracket run (mm)
+- **Bracket Drop** — Vertical offset of bracket (mm)
+
+### Bracket Options
+
+Optional parameters for bracket configuration.
+
+### Fine Tuning
+
+Advanced settings for detailed control.
+
+<Tip>
+Panels marked "Required" must be completed before running optimization. Optional panels provide additional control when needed.
+</Tip>
+
+## 3D Visualization (Center)
+
+The main area displays your design in 3D:
+
+### View Controls
+
+Use the toolbar at the bottom of the viewport:
+
+- **Camera presets** — Quick view angles (up, down, left, right, rotate)
+- **Reset view** — Return to default perspective
+
+### Export Options
+
+Download 3D models directly from the toolbar:
+
+- **DWG** — AutoCAD format
+- **STP** — STEP file for CAD software
+- **3DM** — Rhino 3D format
+
+## Optimization Results Popup
+
+After running optimization, a popup appears showing:
+
+- **Optimization Complete** — Status indicator
+- **Bracket Centres** — Calculated spacing (mm)
+- **Total Deflection** — Predicted deflection (mm)
+- **Weight per m** — Material usage (kg/m)
+- **Ask AI** — Get AI assistance with your design
+- **View Results** — Open the full results panel
+
+## Bottom Controls
+
+### Run Optimization
+
+Click the **Run Optimization** button to calculate the optimal design based on your inputs.
+
+### Design Edits / Chat Tabs
+
+- **Design edits** — View history of changes
+- **Chat** — AI assistant for design help
+
+## Results Panel
+
+Click **Results** in the top navigation or **View Results** in the popup to see:
+
+### Summary
+
+- Overall pass/fail status
+- Utilization percentage
+- Key design values
+
+### Detailed Calculations
+
+Expandable sections showing:
+
+- Reference clauses from EN 1992-4
+- Input values and factors applied
+- Step-by-step calculations
+- Final resistance values
+
+<Note>
+For the best experience, we recommend using Clariti on a desktop or laptop with a screen width of at least 1280px.
+</Note>

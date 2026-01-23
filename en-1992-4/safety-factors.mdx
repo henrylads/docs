@@ -1,0 +1,169 @@
+---
+title: Safety Factors
+description: Understanding partial safety factors in EN 1992-4 anchor channel design
+---
+
+Safety factors in EN 1992-4 ensure adequate reliability by accounting for uncertainties in material strength, loading, and calculation models. This page explains the factors used in anchor channel design.
+
+## Limit State Design Framework
+
+EN 1992-4 follows the Eurocode reliability framework:
+
+```
+Design resistance = Characteristic resistance / Partial factor
+
+Rd = Rk / γM
+```
+
+Where:
+- **R<sub>k</sub>** = Characteristic (5% fractile) resistance
+- **γ<sub>M</sub>** = Partial safety factor for materials
+- **R<sub>d</sub>** = Design resistance
+
+## Partial Factors for Resistance (γ<sub>M</sub>)
+
+### Steel Failure Modes
+
+| Mode | Symbol | Recommended Value | Notes |
+|------|--------|-------------------|-------|
+| Tension (yielding) | γ<sub>Ms</sub> | 1.0 | When f<sub>yk</sub> used |
+| Tension (ultimate) | γ<sub>Ms</sub> | 1.2 | When f<sub>uk</sub> used |
+| Shear | γ<sub>Ms</sub> | 1.0 | Standard value |
+| Combined | γ<sub>Ms</sub> | 1.2 | Conservative |
+
+<Note>
+  Product ETAs may specify different γ<sub>Ms</sub> values. Clariti uses
+  product-specific factors where provided in the ETA.
+</Note>
+
+### Concrete Failure Modes
+
+| Mode | Symbol | Recommended Value | Notes |
+|------|--------|-------------------|-------|
+| Concrete cone (tension) | γ<sub>Mc</sub> | 1.5 | Standard value |
+| Concrete edge (shear) | γ<sub>Mc</sub> | 1.5 | Standard value |
+| Concrete pryout | γ<sub>Mc</sub> | 1.5 | Standard value |
+
+### Pullout and Splitting
+
+| Mode | Symbol | Recommended Value | Notes |
+|------|--------|-------------------|-------|
+| Pullout | γ<sub>Mp</sub> | 1.5 | May vary by product |
+| Splitting | γ<sub>Msp</sub> | 1.5 | Standard value |
+
+## Why Different Factors?
+
+Partial factors reflect uncertainty and consequences:
+
+### Steel Factors (Lower)
+
+- Material properties well-controlled
+- Manufacturing tolerances tight
+- Failure mode typically ductile
+- Good correlation between test and theory
+
+### Concrete Factors (Higher)
+
+- Greater variability in concrete strength
+- Sensitivity to installation quality
+- Brittle failure modes
+- Complex interaction with surrounding concrete
+
+## Characteristic Values
+
+Characteristic resistance (R<sub>k</sub>) represents the 5% fractile:
+
+```
+Rk = mean resistance - 1.64 × standard deviation
+```
+
+This means 95% of samples exceed R<sub>k</sub>. Combined with γ<sub>M</sub>, the design resistance has the target reliability index.
+
+### Determination Methods
+
+| Source | How R<sub>k</sub> is Determined |
+|--------|--------------------------------|
+| Testing | Statistical evaluation of test results |
+| Calculation | EN 1992-4 equations with characteristic inputs |
+| ETA data | Product-specific values from approval testing |
+
+Clariti uses ETA values where available, supplemented by EN 1992-4 calculations.
+
+## Load Factors (γ<sub>F</sub>)
+
+Load factors (from EN 1990) increase design loads:
+
+| Action Type | Symbol | Typical Value |
+|-------------|--------|---------------|
+| Permanent (unfavorable) | γ<sub>G</sub> | 1.35 |
+| Variable (unfavorable) | γ<sub>Q</sub> | 1.5 |
+| Permanent (favorable) | γ<sub>G</sub> | 1.0 |
+
+<Warning>
+  Clariti expects factored (design) loads as input. Apply load factors
+  before entering N<sub>Ed</sub> and V<sub>Ed</sub>.
+</Warning>
+
+## Combination Factors (ψ)
+
+For multiple variable actions:
+
+| Factor | Symbol | Purpose |
+|--------|--------|---------|
+| ψ<sub>0</sub> | Combination | Unlikely all actions at max simultaneously |
+| ψ<sub>1</sub> | Frequent | Typical service conditions |
+| ψ<sub>2</sub> | Quasi-permanent | Long-term average |
+
+Values depend on action type (live load, wind, snow, etc.) and are specified in EN 1990.
+
+## Safety Factor Summary Table
+
+Complete reference for standard values:
+
+| Failure Mode | γ<sub>M</sub> | Applies To |
+|--------------|---------------|------------|
+| Steel tension | 1.2 | N<sub>Rk,s</sub> |
+| Steel shear | 1.0 | V<sub>Rk,s</sub> |
+| Concrete cone | 1.5 | N<sub>Rk,c</sub> |
+| Pullout | 1.5 | N<sub>Rk,p</sub> |
+| Splitting | 1.5 | N<sub>Rk,sp</sub> |
+| Concrete edge | 1.5 | V<sub>Rk,c</sub> |
+| Concrete pryout | 1.5 | V<sub>Rk,cp</sub> |
+
+## National Annex Variations
+
+National Annexes may modify recommended values. Examples:
+
+| Country | Modification |
+|---------|--------------|
+| Germany | Additional requirements for certain applications |
+| UK | Generally follows recommended values |
+| France | Some variations in combination factors |
+
+<Tip>
+  Check your project's jurisdiction for applicable National Annex.
+  Clariti defaults to EN 1992-4 recommended values.
+</Tip>
+
+## Reliability Index
+
+The target reliability index for ULS is typically:
+
+| Consequence Class | β (50-year reference) |
+|-------------------|----------------------|
+| CC1 (Low) | 3.3 |
+| CC2 (Medium) | 3.8 |
+| CC3 (High) | 4.3 |
+
+The combination of load and material factors is calibrated to achieve these targets for typical designs.
+
+## In Clariti
+
+Clariti handles safety factors automatically:
+
+1. **Product factors** — Uses ETA-specific γ<sub>M</sub> where provided
+2. **Standard factors** — Falls back to EN 1992-4 recommended values
+3. **Transparency** — Shows all factors in expanded calculations
+4. **Override option** — Advanced users can adjust factors if justified
+
+All calculations display which factors were applied and their values, ensuring full traceability.

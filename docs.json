@@ -1,68 +1,69 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Clariti Docs",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#7c3aed",
+    "light": "#8b5cf6",
+    "dark": "#6d28d9"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Documentation",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Getting Started",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "introduction",
+              "getting-started/quick-start",
+              "getting-started/interface-overview",
+              "getting-started/first-project"
             ]
           },
           {
-            "group": "Customization",
+            "group": "How Calculations Work",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "calculations/overview",
+              "calculations/input-constraints",
+              "calculations/tension-verification",
+              "calculations/shear-verification",
+              "calculations/combined-loading"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "EN 1992-4 Reference",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
+              "en-1992-4/overview",
+              "en-1992-4/safety-factors",
+              "en-1992-4/design-methods",
+              "en-1992-4/load-combinations",
+              "en-1992-4/partial-factors"
             ]
           },
           {
-            "group": "AI tools",
+            "group": "User Guides",
             "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API reference",
-        "groups": [
-          {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
+              "guides/selecting-channel",
+              "guides/interpreting-results",
+              "guides/exporting-reports",
+              "guides/best-practices"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Reference Data",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "reference/channel-specifications",
+              "reference/product-variants",
+              "reference/material-properties",
+              "reference/load-capacity-tables"
+            ]
+          },
+          {
+            "group": "Glossary",
+            "pages": [
+              "glossary"
             ]
           }
         ]
@@ -71,14 +72,14 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Website",
+          "href": "https://clariti.site",
+          "icon": "globe"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Support",
+          "href": "mailto:support@clariti.site",
+          "icon": "envelope"
         }
       ]
     }
@@ -91,32 +92,18 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:support@clariti.site"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Start Specifying",
+      "href": "https://clariti.site"
     }
-  },
-  "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "linkedin": "https://linkedin.com/company/clariti"
     }
   }
 }

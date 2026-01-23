@@ -1,0 +1,270 @@
+---
+title: Tension Verification
+description: Detailed explanation of tension failure mode calculations per EN 1992-4
+---
+
+This page explains how Clariti verifies anchor channels against tension failure modes according to EN 1992-4.
+
+## Overview
+
+Four tension failure modes must be checked:
+
+1. **Steel failure** — Fracture of anchor or channel steel
+2. **Concrete cone failure** — Breakout of concrete cone
+3. **Pullout failure** — Anchor pulls out without cone formation
+4. **Concrete splitting** — Splitting of concrete member
+
+Each mode has characteristic resistance (NRk) reduced by partial factors (γM) to give design resistance (NRd).
+
+## Verification Format
+
+All verifications follow the same format:
+
+```
+βN = Nᵃₑd / NRd ≤ 1.0
+```
+
+Where:
+- βN = Utilisation ratio (shown as percentage)
+- Nᵃₑd = Design tension force on anchor (from [force distribution](/calculations/force-distribution))
+- NRd = Design resistance for the failure mode
+
+A utilisation ≤ 100% means the design is adequate for that failure mode.
+
+## Steel Failure — Anchor in Tension
+
+This failure mode occurs when the tension load exceeds the tensile strength of the anchor shaft, causing it to fracture.
+
+### Equation
+
+```
+NRd,s,a = NRk,s,a / γMs
+```
+
+### Parameters
+
+| Symbol | Description | CPRO38 | CPRO50 | CPRO52 | Source |
+|--------|-------------|--------|--------|--------|--------|
+| NRk,s,a | Characteristic tensile resistance of anchor | 27.1 kN | 42.4 kN | 71.7 kN | ETA Table C1 |
+| γMs | Partial safety factor for steel | 1.85 | 1.85 | 1.85 | ETA Annex C1 |
+
+### Design Resistances
+
+| Channel | NRk,s,a (kN) | γMs | NRd,s,a (kN) |
+|---------|-------------|-----|--------------|
+| CPRO38 | 27.1 | 1.85 | **14.6** |
+| CPRO50 | 42.4 | 1.85 | **22.9** |
+| CPRO52 | 71.7 | 1.85 | **38.8** |
+
+### Worked Example
+
+**Given**: CPRO50 channel, anchor tension Nᵃₑd = 13.90 kN
+
+**Step 1**: Look up characteristic resistance
+- NRk,s,a = 42.4 kN (from ETA Table C1)
+
+**Step 2**: Apply partial safety factor
+```
+NRd,s,a = 42.4 / 1.85 = 22.92 kN
+```
+
+**Step 3**: Calculate utilisation
+```
+βN = 13.90 / 22.92 = 0.61 = 61%
+```
+
+**Result**: Verification **PASSES** (61% ≤ 100%)
+
+## Steel Failure — Channel Connection
+
+This mode checks the connection between anchor and channel (the weld or mechanical connection).
+
+### Equation
+
+```
+NRd,s,c = NRk,s,c / γMs,ca
+```
+
+### Parameters
+
+| Symbol | Description | CPRO38 | CPRO50 | CPRO52 | Source |
+|--------|-------------|--------|--------|--------|--------|
+| NRk,s,c | Characteristic resistance of connection | 28 kN | 32 kN | 76 kN | ETA Table C1 |
+| γMs,ca | Partial safety factor | 1.8 | 1.8 | 1.8 | ETA Annex C1 |
+
+## Steel Failure — Channel Bolt
+
+The T-bolt connecting the load to the channel must also be verified.
+
+### Equation
+
+```
+NRd,s,b = NRk,s,b / γMs2
+```
+
+### Bolt Characteristic Resistances
+
+| Bolt Size | CPRO38 | CPRO50 | CPRO52 | Source |
+|-----------|--------|--------|--------|--------|
+| M10 | 40.6 kN | — | — | ETA Table C7 |
+| M12 | 45.7 kN | 59 kN | 59 kN | ETA Table C7 |
+| M16 | 101.7 kN | 109.9 kN | 109.9 kN | ETA Table C7 |
+| M20 | — | 145.2 kN | 145.2 kN | ETA Table C7 |
+
+Partial safety factor: γMs2 = 1.87
+
+## Concrete Cone Failure
+
+### Equation
+
+```
+NRd,c = N⁰Rk,c × (Ac,N / A⁰c,N) × ψs,N × ψre,N × ψec,N / γMc
+```
+
+### Basic Resistance
+
+```
+N⁰Rk,c = k × √fck × hef^1.5
+```
+
+Where:
+
+| Symbol | Description | Cracked | Uncracked | Source |
+|--------|-------------|---------|-----------|--------|
+| k | Cracking factor | kcr,N | kucr,N | ETA Table C2 |
+
+**Cracking factors by channel:**
+
+| Channel | kcr,N | kucr,N | hef (mm) |
+|---------|-------|--------|----------|
+| CPRO38 | 7.8 | 11.1 | 72 |
+| CPRO50 | 8.1 | 11.6 | 99 |
+| CPRO52 | 8.7 | 12.4 | 151 |
+
+### Area Ratio
+
+The reference cone area assumes unlimited concrete:
+
+```
+A⁰c,N = scr,N × scr,N
+```
+
+Where scr,N = 3 × hef
+
+The actual area Ac,N is reduced by:
+- Proximity to edges
+- Overlap with adjacent anchors
+- Member thickness limitations
+
+### Reduction Factors
+
+**Edge distance factor:**
+```
+ψs,N = 0.7 + 0.3 × (c / ccr,N) ≤ 1.0
+```
+
+Where ccr,N = 1.5 × hef
+
+**Reinforcement factor:**
+```
+ψre,N = 0.5 + hef/200 ≤ 1.0   (without supplementary reinforcement)
+ψre,N = 1.0                    (with supplementary reinforcement)
+```
+
+**Eccentricity factor:**
+```
+ψec,N = 1 / (1 + 2eN/scr,N) ≤ 1.0
+```
+
+**Partial factor:** γMc = 1.5
+
+## Pullout Failure
+
+### Equation
+
+```
+NRd,p = NRk,p × ψc,p / γMp
+```
+
+### Characteristic Resistances
+
+| Channel | Cracked NRk,p (kN) | Uncracked NRk,p (kN) | Source |
+|---------|-------------------|----------------------|--------|
+| CPRO38 | 13.6 | 19.0 | ETA Table C2 |
+| CPRO50 | 18.4 | 25.8 | ETA Table C2 |
+| CPRO52 | 32.2 | 45.1 | ETA Table C2 |
+
+**Partial factor:** γMp = 1.5
+
+<Note>
+Pullout resistance is product-specific and determined by testing. Clariti uses certified ETA values directly.
+</Note>
+
+## Concrete Splitting
+
+### When It Applies
+
+Splitting must be checked when:
+- Member thickness h < hmin (specified in ETA)
+- Edge distance c < ccr,sp
+- Spacing s < scr,sp
+
+### Minimum Member Thickness
+
+| Channel | hmin (mm) | Source |
+|---------|-----------|--------|
+| CPRO38 | 100 | ETA Table B1 |
+| CPRO50 | 130 | ETA Table B1 |
+| CPRO52 | 185 | ETA Table B1 |
+
+### Equation
+
+```
+NRd,sp = N⁰Rk,c × (Ac,N/A⁰c,N)sp × ψs,N × ψre,N × ψec,N × ψh,sp / γMsp
+```
+
+**Thickness factor:**
+```
+ψh,sp = (h / hmin)^(2/3) ≤ 1.0
+```
+
+**Partial factor:** γMsp = 1.5
+
+## Safety Factors Summary
+
+| Failure Mode | Symbol | Value | Source |
+|--------------|--------|-------|--------|
+| Anchor steel failure | γMs | 1.85 | ETA Annex C1 |
+| Anchor channel connection | γMs,ca | 1.8 | ETA Annex C1 |
+| Channel lips | γMs,l | 1.8 | ETA Annex C1 |
+| Tension bolt | γMs2 | 1.87 | ETA Annex C1 |
+| Channel flexure | γMs,flex | 1.15 | ETA Annex C1 |
+| Pullout | γMp | 1.5 | ETA Annex C2 |
+| Splitting | γMsp | 1.5 | ETA Annex C2 |
+| Concrete cone/blowout | γMc | 1.5 | ETA Annex C2 |
+
+## Governing Failure Mode
+
+Clariti determines the governing mode automatically:
+
+```
+ηsteel = NEd / NRd,s
+ηcone  = NEd / NRd,c
+ηpull  = NEd / NRd,p
+ηsplit = NEd / NRd,sp
+
+Governing mode = max(ηsteel, ηcone, ηpull, ηsplit)
+```
+
+The results panel highlights the governing mode and shows utilisation for all modes.
+
+## In Clariti
+
+Clariti displays tension verification as:
+
+1. **Summary** — Overall tension utilisation and governing mode
+2. **Breakdown** — Each mode with its utilisation percentage
+3. **Expanded view** — Full calculation with all intermediate values
+4. **ETA references** — Source data for traceability
+
+All factors and their values are shown with the equation that generated them, allowing full verification of the calculation.

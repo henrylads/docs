@@ -1,0 +1,72 @@
+---
+title: Design Method
+description: The EN 1992-4 design method used by Clariti for anchor channel verification
+---
+
+Clariti uses **Method A** from EN 1992-4 — the full design method that provides the most accurate verification of anchor channel capacity.
+
+## Method A — Full Design Method
+
+Method A is the complete verification procedure covering all failure modes with detailed calculations. It provides the highest accuracy and is required for final design verification.
+
+### Procedure
+
+The method follows these steps:
+
+1. **Determine effective geometry**
+   - Embedment depth (hef)
+   - Edge distances (c1, c2)
+   - Spacing (s)
+   - Member thickness (h)
+
+2. **Calculate characteristic resistances**
+   - Steel: NRk,s, VRk,s
+   - Concrete cone: NRk,c
+   - Pullout: NRk,p
+   - Splitting: NRk,sp
+   - Edge: VRk,c
+   - Pryout: VRk,cp
+
+3. **Apply reduction factors**
+   - Area ratios (Ac,N/A°c,N)
+   - ψ factors (edge, spacing, eccentricity, etc.)
+
+4. **Apply partial safety factors**
+   - NRd = NRk / γM
+   - VRd = VRk / γM
+
+5. **Verify design condition**
+   - NEd ≤ NRd for all tension modes
+   - VEd ≤ VRd for all shear modes
+
+6. **Check interaction**
+   - Combined tension-shear if applicable
+
+### Why Method A
+
+| Advantage | Benefit |
+|-----------|---------|
+| Most accurate | Reflects actual anchor behavior |
+| All failure modes | No modes overlooked |
+| Geometric effects | Accounts for edges, spacing, thickness |
+| Optimised designs | Avoids unnecessary conservatism |
+| Full documentation | Complete audit trail for approvals |
+
+<Note>
+EN 1992-4 also defines simplified methods (B and C) for quick checks, but these are conservative and limited in scope. Clariti uses Method A exclusively to ensure accurate, optimised designs.
+</Note>
+
+## How Clariti Implements Method A
+
+Clariti automates the full Method A procedure:
+
+1. **Automatic geometry analysis** — Determines all relevant distances and checks constraints
+2. **Complete mode checking** — Verifies all applicable tension and shear failure modes
+3. **Factor calculation** — Computes all ψ reduction factors with justification
+4. **Interaction verification** — Checks combined loading per EN 1992-4 Section 7.2.3
+5. **Transparency** — Documents every step with EN 1992-4 clause references
+
+This ensures designs are:
+- Fully compliant with EN 1992-4
+- Optimised for the specific geometry
+- Documented for approval

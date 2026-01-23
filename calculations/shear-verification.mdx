@@ -1,0 +1,250 @@
+---
+title: Shear Verification
+description: Detailed explanation of shear failure mode calculations per EN 1992-4
+---
+
+This page explains how Clariti verifies anchor channels against shear failure modes according to EN 1992-4.
+
+## Overview
+
+Three shear failure modes must be checked:
+
+1. **Steel failure** — Shear failure of anchor steel
+2. **Concrete edge failure** — Breakout toward a free edge
+3. **Concrete pryout** — Breakout on the back side of anchors
+
+The governing mode depends on geometry, particularly edge distances and load direction.
+
+## Steel Failure in Shear
+
+### Equation
+
+```
+VRd,s = VRk,s / γMs
+
+Where:
+  VRk,s = k₂ × As × fuk
+```
+
+| Symbol | Description | Source |
+|--------|-------------|--------|
+| k₂ | Reduction factor for shear | 0.6 (typical) |
+| A<sub>s</sub> | Stressed cross-section | ETA data |
+| f<sub>uk</sub> | Ultimate steel strength | ETA data |
+| γ<sub>Ms</sub> | Partial factor for steel | ETA (typically 1.0 for shear) |
+
+### Notes
+
+- Shear steel resistance is typically lower than tension (k₂ = 0.6)
+- Lever arm effects may further reduce capacity
+- Product-specific values in ETA may differ
+
+### Lever Arm Effect
+
+When shear acts with a lever arm (stand-off installation):
+
+```
+VRd,s = αM × VRk,s / γMs
+
+Where:
+  αM = lever arm reduction factor
+```
+
+For cast-in anchor channels, lever arm is typically zero (no stand-off).
+
+## Concrete Edge Failure
+
+### When It Governs
+
+Edge failure typically governs when:
+- Shear acts toward a free edge
+- Edge distance is less than ~10 × h<sub>ef</sub>
+- High shear loads relative to tension
+
+### Equation
+
+```
+VRd,c = V°Rk,c × (Ac,V / A°c,V) × ψs,V × ψh,V × ψec,V × ψα,V × ψre,V / γMc
+```
+
+### Basic Resistance (V°<sub>Rk,c</sub>)
+
+```
+V°Rk,c = k₁ × dnom^α × √(lf/dnom) × √fck × c₁^1.5
+
+Where:
+  k₁ = 1.7 (cracked) or 2.4 (uncracked)
+  dnom = nominal anchor diameter
+  lf = effective length under shear (≤ 8×dnom)
+  c₁ = edge distance in load direction
+```
+
+### Reference Area (A°<sub>c,V</sub>)
+
+```
+A°c,V = 4.5 × c₁²
+
+Actual area Ac,V reduced by:
+  - Member thickness limitations
+  - Spacing to adjacent anchors
+  - Corner effects (two edges)
+```
+
+### Reduction Factors
+
+**Edge distance factor (ψ<sub>s,V</sub>)**:
+```
+ψs,V = 0.7 + 0.3 × c₂/(1.5×c₁) ≤ 1.0
+```
+
+Where c₂ is the perpendicular edge distance.
+
+**Thickness factor (ψ<sub>h,V</sub>)**:
+```
+ψh,V = (1.5×c₁/h)^0.5 ≤ 1.0
+```
+
+Applies when member thickness h < 1.5 × c₁.
+
+**Eccentricity factor (ψ<sub>ec,V</sub>)**:
+```
+ψec,V = 1/(1 + 2×eV/(3×c₁)) ≤ 1.0
+```
+
+**Load direction factor (ψ<sub>α,V</sub>)**:
+```
+ψα,V = √(1/(cos²αV + (sin²αV)/2.5)) ≤ 1.0
+```
+
+Where α<sub>V</sub> is the angle between load and edge.
+
+**Reinforcement factor (ψ<sub>re,V</sub>)**:
+```
+ψre,V = 1.0   (with edge reinforcement)
+ψre,V = 0.7   (without edge reinforcement, narrow member)
+```
+
+### Example Calculation
+
+Given:
+- c₁ = 150 mm (edge distance in load direction)
+- c₂ = 200 mm (perpendicular edge)
+- h = 300 mm (member thickness)
+- f<sub>ck</sub> = 30 MPa
+- d<sub>nom</sub> = 10 mm, l<sub>f</sub> = 80 mm
+- Cracked concrete
+
+Calculate:
+
+```
+Reference area:
+  A°c,V = 4.5 × 150² = 101,250 mm²
+  Ac,V = Limited by geometry... (assume no reduction)
+  Ratio = 1.0
+
+Edge factor (c₂ direction):
+  c₂/(1.5×c₁) = 200/(1.5×150) = 0.89
+  ψs,V = 0.7 + 0.3 × 0.89 = 0.97
+
+Thickness factor:
+  1.5×c₁ = 225 mm < h = 300 mm
+  ψh,V = 1.0 (no reduction)
+
+Basic resistance:
+  V°Rk,c = 1.7 × 10^0.5 × √(80/10) × √30 × 150^1.5
+  V°Rk,c = 1.7 × 3.16 × 2.83 × 5.48 × 1837
+  V°Rk,c = 153 kN
+
+Design resistance:
+  VRd,c = 153 × 1.0 × 0.97 × 1.0 × 1.0 × 1.0 × 1.0 / 1.5
+  VRd,c = 99 kN
+```
+
+<Warning>
+  Edge failure is often the governing mode for shear toward edges. Always
+  check edge distances carefully and consider if reinforcement can be added.
+</Warning>
+
+## Concrete Pryout Failure
+
+### When It Applies
+
+Pryout governs for:
+- Short, stiff anchors (h<sub>ef</sub> < 60mm typically)
+- Shear away from edges
+- High concrete strength (concrete cone capacity is high)
+
+### Equation
+
+```
+VRd,cp = k × NRd,c
+
+Where:
+  k = pryout factor
+    = 1.0 for hef < 60mm
+    = 2.0 for hef ≥ 60mm
+  NRd,c = concrete cone resistance (tension)
+```
+
+### Logic
+
+Pryout is related to concrete cone because the failure mechanism involves a concrete breakout on the opposite side from the shear load. The pryout factor k accounts for the different loading geometry.
+
+### Example
+
+Given:
+- h<sub>ef</sub> = 50 mm
+- N<sub>Rd,c</sub> = 20 kN (from tension calculation)
+
+Calculate:
+```
+k = 1.0 (since hef = 50 < 60mm)
+VRd,cp = 1.0 × 20 = 20 kN
+```
+
+For deeper embedment (h<sub>ef</sub> = 80 mm):
+```
+k = 2.0
+VRd,cp = 2.0 × 20 = 40 kN
+```
+
+<Note>
+  Pryout resistance doubles when embedment exceeds 60mm. This is a significant
+  threshold for anchor channel selection.
+</Note>
+
+## Shear Load Direction
+
+The governing failure mode depends heavily on load direction:
+
+| Direction | Likely Governing Mode |
+|-----------|----------------------|
+| Toward near edge | Concrete edge failure |
+| Away from edges | Pryout or steel |
+| Parallel to edge | Steel (often), or edge if close |
+| Oblique | Check all modes |
+
+Clariti automatically evaluates all modes for any load direction and reports the governing one.
+
+## Governing Failure Mode
+
+```
+Utilization for each mode:
+  ηsteel   = VEd / VRd,s
+  ηedge    = VEd / VRd,c
+  ηpryout  = VEd / VRd,cp
+
+Governing mode = max(ηsteel, ηedge, ηpryout)
+```
+
+## In Clariti
+
+Shear verification displays:
+
+1. **Load direction** — Visual indicator of shear relative to edges
+2. **Edge distances** — All edge distances with critical values
+3. **Mode breakdown** — Each mode with utilization
+4. **Governing indicator** — Highlighted governing mode
+5. **Expanded calculations** — Full EN 1992-4 equations with values
+
+The 3D view shows the shear vector and proximity to edges, helping you understand why certain modes govern.

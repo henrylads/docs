@@ -1,0 +1,240 @@
+---
+title: Load Combinations
+description: Understanding load combinations for anchor channel design per Eurocode
+---
+
+Load combinations determine the design loads (N<sub>Ed</sub>, V<sub>Ed</sub>) that Clariti uses for verification. This page explains how loads are combined according to Eurocode principles.
+
+## Load Combination Framework
+
+EN 1990 defines how actions (loads) are combined for structural design. These combinations produce the design loads input to Clariti.
+
+### Ultimate Limit State (ULS)
+
+The primary design verification:
+
+```
+Ed = γG·Gk + γQ·Qk,1 + Σ(γQ·ψ0,i·Qk,i)
+
+Where:
+  Gk = characteristic permanent action
+  Qk,1 = dominant variable action
+  Qk,i = other variable actions
+  γG = partial factor for permanent (1.35)
+  γQ = partial factor for variable (1.5)
+  ψ0 = combination factor
+```
+
+### Serviceability Limit State (SLS)
+
+For deflection and durability checks:
+
+```
+Characteristic:    Ed = Gk + Qk,1 + Σ(ψ0,i·Qk,i)
+Frequent:         Ed = Gk + ψ1,1·Qk,1 + Σ(ψ2,i·Qk,i)
+Quasi-permanent:  Ed = Gk + Σ(ψ2,i·Qk,i)
+```
+
+## Common Load Cases
+
+### Dead Load (G)
+
+Permanent, constant loads:
+
+- Self-weight of structure
+- Fixed equipment
+- Permanent fixtures
+
+Factor: γ<sub>G</sub> = 1.35 (unfavorable) or 1.0 (favorable)
+
+### Live Load (Q)
+
+Variable loads from occupancy:
+
+| Category | Example | ψ<sub>0</sub> | ψ<sub>1</sub> | ψ<sub>2</sub> |
+|----------|---------|---------------|---------------|---------------|
+| A (Domestic) | Residential | 0.7 | 0.5 | 0.3 |
+| B (Office) | Commercial | 0.7 | 0.5 | 0.3 |
+| C (Assembly) | Public spaces | 0.7 | 0.7 | 0.6 |
+| D (Retail) | Shops | 0.7 | 0.7 | 0.6 |
+
+### Wind Load (W)
+
+Variable environmental load:
+
+| Parameter | Value |
+|-----------|-------|
+| ψ<sub>0</sub> | 0.6 |
+| ψ<sub>1</sub> | 0.2 |
+| ψ<sub>2</sub> | 0.0 |
+
+Wind typically produces horizontal (shear) loads on anchor connections.
+
+### Snow Load (S)
+
+Variable environmental load (altitude dependent):
+
+| Altitude | ψ<sub>0</sub> | ψ<sub>1</sub> | ψ<sub>2</sub> |
+|----------|---------------|---------------|---------------|
+| < 1000m | 0.5 | 0.2 | 0.0 |
+| > 1000m | 0.7 | 0.5 | 0.2 |
+
+### Temperature (T)
+
+Thermal actions:
+
+| Parameter | Value |
+|-----------|-------|
+| ψ<sub>0</sub> | 0.6 |
+| ψ<sub>1</sub> | 0.5 |
+| ψ<sub>2</sub> | 0.0 |
+
+Temperature changes can induce restraint forces in fixed connections.
+
+## ULS Combination Equations
+
+### Equation 6.10 (General)
+
+```
+Ed = 1.35·Gk + 1.5·Qk,1 + 1.5·Σ(ψ0,i·Qk,i)
+```
+
+Single equation covering all permanent and variable actions.
+
+### Equations 6.10a and 6.10b (Alternative)
+
+Some National Annexes use:
+
+```
+6.10a: Ed = 1.35·Gk + 1.5·ψ0·Qk,1 + 1.5·Σ(ψ0,i·Qk,i)
+6.10b: Ed = ξ·1.35·Gk + 1.5·Qk,1 + 1.5·Σ(ψ0,i·Qk,i)
+
+Where ξ = 0.85 (typical)
+```
+
+Use the more critical result.
+
+<Tip>
+  Check your National Annex for which approach applies. Clariti accepts
+  factored design loads regardless of the combination method used.
+</Tip>
+
+## Worked Example
+
+Facade bracket supporting a cladding panel:
+
+### Input Loads (Characteristic)
+
+| Action | Vertical (Tension) | Horizontal (Shear) |
+|--------|-------------------|-------------------|
+| Dead load G<sub>k</sub> | 8 kN | 0 kN |
+| Wind W<sub>k</sub> | 0 kN | 12 kN |
+| Live Q<sub>k</sub> | 2 kN | 0 kN |
+
+### Combination 1: Dead + Wind (Primary)
+
+```
+NEd = 1.35 × 8 + 1.5 × 0.7 × 2 = 12.9 kN
+VEd = 1.5 × 12 = 18.0 kN
+```
+
+### Combination 2: Dead + Live (Primary)
+
+```
+NEd = 1.35 × 8 + 1.5 × 2 = 13.8 kN
+VEd = 1.5 × 0.6 × 12 = 10.8 kN
+```
+
+### Design Loads
+
+Both combinations should be checked. The governing combination may differ depending on which failure mode controls.
+
+## Load Direction Considerations
+
+### Tension vs. Compression
+
+- **Tension (away from concrete)**: Engages anchor capacity
+- **Compression (into concrete)**: May provide friction benefit
+
+### Shear Direction
+
+- **Toward edge**: Concrete edge failure likely governs
+- **Away from edge**: Pryout or steel may govern
+- **Parallel to edge**: Direction affects capacity
+
+### Sign Convention
+
+In Clariti:
+- Positive N<sub>Ed</sub>: Tension (anchor in tension)
+- Negative N<sub>Ed</sub>: Compression (toward concrete)
+- V<sub>Ed</sub>: Specify direction relative to edges
+
+## Special Situations
+
+### Seismic Loading
+
+Seismic combinations per EN 1998:
+
+```
+Ed = Gk + AEd + ψ2·Qk
+
+Where AEd = seismic action
+```
+
+Partial factors may be modified for seismic design situations.
+
+<Warning>
+  Seismic design requires additional considerations per EN 1992-4
+  Annex C. Products must be qualified for seismic applications.
+</Warning>
+
+### Accidental Loading
+
+For accidental design situations (impact, explosion):
+
+```
+Ed = Gk + Ad + ψ1·Qk,1 + Σ(ψ2,i·Qk,i)
+
+Where Ad = accidental action
+```
+
+Partial factors γ = 1.0 for accidental combinations.
+
+### Fatigue Loading
+
+For cyclic loading:
+
+- Reduced partial factors may apply
+- Fatigue verification per EN 1992-4 Section 4.4
+- Product-specific fatigue data required
+
+## In Clariti
+
+### Load Input
+
+Clariti expects factored design loads:
+
+1. **Single load case**: Enter N<sub>Ed</sub> and V<sub>Ed</sub> directly
+2. **Multiple cases**: Define several load cases, check each
+
+### What to Enter
+
+| Input Field | What to Enter |
+|-------------|---------------|
+| N<sub>Ed</sub> | Factored design tension (kN) |
+| V<sub>Ed</sub> | Factored design shear (kN) |
+| Direction | Shear direction relative to edges |
+
+### Multiple Load Cases
+
+For comprehensive verification:
+
+1. Create load cases for each combination
+2. Clariti checks all modes for each case
+3. Results show which case governs
+4. Export includes all cases
+
+<Note>
+  If unsure which combination governs, enter multiple cases. Clariti
+  will identify the critical one for each failure mode.
+</Note>

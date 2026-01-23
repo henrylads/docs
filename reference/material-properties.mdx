@@ -1,0 +1,218 @@
+---
+title: Material Properties
+description: Reference data for materials used in anchor channel design
+---
+
+This page provides material property data for concrete, steel, and stainless steel used in anchor channel calculations per EN 1992-4.
+
+## Concrete Properties
+
+### Strength Classes (EN 1992-1-1)
+
+| Class | f<sub>ck</sub> (MPa) | f<sub>ck,cube</sub> (MPa) | f<sub>cm</sub> (MPa) | f<sub>ctm</sub> (MPa) | E<sub>cm</sub> (GPa) |
+|-------|---------------------|--------------------------|---------------------|----------------------|---------------------|
+| C12/15 | 12 | 15 | 20 | 1.6 | 27 |
+| C16/20 | 16 | 20 | 24 | 1.9 | 29 |
+| C20/25 | 20 | 25 | 28 | 2.2 | 30 |
+| C25/30 | 25 | 30 | 33 | 2.6 | 31 |
+| C30/37 | 30 | 37 | 38 | 2.9 | 33 |
+| C35/45 | 35 | 45 | 43 | 3.2 | 34 |
+| C40/50 | 40 | 50 | 48 | 3.5 | 35 |
+| C45/55 | 45 | 55 | 53 | 3.8 | 36 |
+| C50/60 | 50 | 60 | 58 | 4.1 | 37 |
+
+**Key:**
+- f<sub>ck</sub> = Characteristic cylinder strength
+- f<sub>ck,cube</sub> = Characteristic cube strength
+- f<sub>cm</sub> = Mean cylinder strength
+- f<sub>ctm</sub> = Mean tensile strength
+- E<sub>cm</sub> = Mean elastic modulus
+
+### Values Used in EN 1992-4
+
+For anchor channel calculations, the key parameter is f<sub>ck</sub>:
+
+```
+Concrete cone: NRk,c ∝ √fck × hef^1.5
+Edge failure:  VRk,c ∝ √fck × c1^1.5
+```
+
+<Note>
+  Higher concrete strength increases capacity, but benefits diminish
+  for f<sub>ck</sub> > 50 MPa. Other factors often govern.
+</Note>
+
+### Cracking Parameters
+
+| Parameter | Cracked | Uncracked |
+|-----------|---------|-----------|
+| k₁ factor | 8.9 | 12.7 |
+| Capacity ratio | 1.0 | 1.43 |
+
+Uncracked concrete has ~43% higher capacity but requires justification.
+
+## Steel Properties
+
+### Carbon Steel Grades
+
+| Grade | f<sub>yk</sub> (MPa) | f<sub>uk</sub> (MPa) | Elongation (%) |
+|-------|---------------------|---------------------|----------------|
+| S235 | 235 | 360 | 26 |
+| S275 | 275 | 430 | 23 |
+| S355 | 355 | 510 | 22 |
+| S460 | 460 | 540 | 17 |
+
+### Bolt Grades
+
+| Grade | f<sub>yb</sub> (MPa) | f<sub>ub</sub> (MPa) | Notes |
+|-------|---------------------|---------------------|-------|
+| 4.6 | 240 | 400 | Low strength |
+| 5.6 | 300 | 500 | Medium strength |
+| 8.8 | 640 | 800 | Standard structural |
+| 10.9 | 900 | 1000 | High strength |
+| 12.9 | 1080 | 1200 | Very high strength |
+
+<Warning>
+  High-strength bolts (10.9, 12.9) may be susceptible to hydrogen
+  embrittlement. Use with care in corrosive environments.
+</Warning>
+
+### Steel Elastic Properties
+
+| Property | Symbol | Value | Unit |
+|----------|--------|-------|------|
+| Elastic modulus | E | 210 | GPa |
+| Shear modulus | G | 81 | GPa |
+| Poisson's ratio | ν | 0.3 | - |
+| Density | ρ | 7850 | kg/m³ |
+| Thermal expansion | α | 12×10⁻⁶ | /°C |
+
+## Stainless Steel Properties
+
+### Austenitic Grades
+
+| Grade | EN | AISI | f<sub>y</sub> (MPa) | f<sub>u</sub> (MPa) | PREN |
+|-------|-----|------|---------------------|---------------------|------|
+| 1.4301 | X5CrNi18-10 | 304 | 210 | 520 | 18 |
+| 1.4307 | X2CrNi18-9 | 304L | 200 | 500 | 18 |
+| 1.4401 | X5CrNiMo17-12-2 | 316 | 220 | 530 | 24 |
+| 1.4404 | X2CrNiMo17-12-2 | 316L | 220 | 520 | 24 |
+| 1.4571 | X6CrNiMoTi17-12-2 | 316Ti | 220 | 520 | 24 |
+
+**PREN** = Pitting Resistance Equivalent Number
+
+```
+PREN = %Cr + 3.3×%Mo + 16×%N
+```
+
+Higher PREN indicates better pitting resistance.
+
+### Stainless Bolt Grades
+
+| Grade | f<sub>y</sub> (MPa) | f<sub>u</sub> (MPa) | Material |
+|-------|---------------------|---------------------|----------|
+| A2-50 | 210 | 500 | 1.4301 |
+| A2-70 | 450 | 700 | 1.4301 cold worked |
+| A4-50 | 210 | 500 | 1.4401/1.4404 |
+| A4-70 | 450 | 700 | 1.4401/1.4404 cold worked |
+| A4-80 | 600 | 800 | 1.4401/1.4404 high strength |
+
+<Tip>
+  A4-70 is the standard grade for external structural applications.
+  It provides good strength and corrosion resistance.
+</Tip>
+
+### Stainless Steel Properties
+
+| Property | Austenitic (304/316) |
+|----------|---------------------|
+| Elastic modulus | 200 GPa |
+| Density | 8000 kg/m³ |
+| Thermal expansion | 16×10⁻⁶ /°C |
+| Thermal conductivity | 15 W/m·K |
+| Magnetic | No (annealed) |
+
+## Corrosion Resistance Guide
+
+### Environmental Categories
+
+| Category | Environment | Examples |
+|----------|-------------|----------|
+| C1 | Heated interiors | Offices, shops |
+| C2 | Unheated interiors | Warehouses |
+| C3 | Urban/industrial | Urban facades |
+| C4 | Industrial | Factories, coast |
+| C5 | Marine/industrial | Near sea, heavy industrial |
+
+### Material Selection by Category
+
+| Category | HDG | 1.4301 | 1.4404 |
+|----------|-----|--------|--------|
+| C1 | ✓✓ | ✓ | ✓ |
+| C2 | ✓ | ✓✓ | ✓✓ |
+| C3 | ✗ | ✓ | ✓✓ |
+| C4 | ✗ | ✗ | ✓ |
+| C5 | ✗ | ✗ | △ (duplex preferred) |
+
+**Key:** ✓✓ Preferred, ✓ Acceptable, △ Marginal, ✗ Not recommended
+
+## Partial Safety Factors
+
+### Steel (EN 1992-4)
+
+| Mode | γ<sub>Ms</sub> |
+|------|----------------|
+| Tension (f<sub>uk</sub>) | 1.2 |
+| Tension (f<sub>yk</sub>) | 1.0 |
+| Shear | 1.0 |
+
+### Concrete (EN 1992-4)
+
+| Mode | γ<sub>Mc</sub> |
+|------|----------------|
+| Cone failure | 1.5 |
+| Edge failure | 1.5 |
+| Pryout | 1.5 |
+| Pullout | 1.5 |
+| Splitting | 1.5 |
+
+## Design Value Calculations
+
+### Steel Resistance
+
+```
+NRd,s = As × fuk / γMs
+      = As × fuk / 1.2
+
+VRd,s = 0.6 × As × fuk / γMs
+      = 0.6 × As × fuk / 1.0
+```
+
+### Concrete Cone Resistance
+
+```
+NRd,c = k1 × √fck × hef^1.5 × ψ factors / γMc
+      = k1 × √fck × hef^1.5 × ψ factors / 1.5
+```
+
+## Quick Reference Calculations
+
+### Common √f<sub>ck</sub> Values
+
+| f<sub>ck</sub> | √f<sub>ck</sub> |
+|----------------|-----------------|
+| 20 | 4.47 |
+| 25 | 5.00 |
+| 30 | 5.48 |
+| 35 | 5.92 |
+| 40 | 6.32 |
+
+### Common h<sub>ef</sub>^1.5 Values
+
+| h<sub>ef</sub> (mm) | h<sub>ef</sub>^1.5 |
+|---------------------|-------------------|
+| 32 | 181 |
+| 47 | 322 |
+| 63 | 500 |
+| 80 | 716 |
+| 100 | 1000 |
