@@ -1,6 +1,6 @@
 ---
-title: Input Constraints
-description: Valid input ranges and constraints for anchor channel calculations
+title: "Input Constraints"
+description: "Valid input ranges and constraints for anchor channel calculations"
 ---
 
 This page documents the constraints that must be satisfied when specifying bolt positions and loads on anchor channels. Clariti validates these constraints automatically and warns you if inputs fall outside valid ranges.
@@ -11,43 +11,36 @@ Each anchor channel has an **overhang zone** at both ends where no bolt or load 
 
 ### Overhang Values
 
-| Channel Family | Overhang x (mm) | Source |
-|----------------|-----------------|--------|
-| CPRO38 | 25 | ETA Table A3 |
-| CPRO50 | 25 | ETA Table A3 |
-| CPRO52 | 35 | ETA Table A3 |
+| Channel Family | Overhang x (mm) |
+| -------------- | --------------- |
+| CPRO38         | 25              |
+| CPRO50         | 25              |
+| CPRO52         | 35              |
+| CPRO52S        | 35              |
 
 ### Visual Representation
 
 ```
 Channel layout:
 
-│← x →│                               │← x →│
-═══════╪═══════════════════════════════╪═══════
-       │                               │
-    First                           Last
-   anchor                          anchor
+│← x →│                               					│← x →│
+ ═════╪═══════════════════════════════╪═════
+         │                                                  │
+        First                                                Last
+        anchor                                               anchor
 
-│ No  │←── Valid bolt zone ────────→│ No  │
-│loads│                             │loads│
+│ No  │ ←────────── Valid bolt zone ────────→  │ No   │
+│loads│                                                     │loads │
 ```
 
 ### Example
 
 **CPRO50-350** (350mm length, overhang 25mm):
 
-```
-Channel:  0mm ───────────────────────── 350mm
-               │                    │
-Overhang:   0-25mm              325-350mm
-               │                    │
-Valid zone:    25mm ──────────── 325mm
-```
-
 Bolts must be placed between 25mm and 325mm on this channel.
 
 <Warning>
-Loads placed in the overhang zone cannot be properly distributed to anchors and will produce invalid results. Clariti will reject such inputs.
+  Loads placed in the overhang zone cannot be properly distributed to anchors and will produce invalid results. Clariti will reject such inputs.
 </Warning>
 
 ## Minimum Bolt Spacing
@@ -59,16 +52,16 @@ When multiple bolts are used, they must maintain minimum spacing from each other
 The minimum spacing between adjacent bolts depends on the bolt diameter:
 
 | Channel | Bolt Size | Min Spacing Smin,cbo (mm) |
-|---------|-----------|---------------------------|
-| CPRO38 | M10 | 50 |
-| CPRO38 | M12 | 60 |
-| CPRO38 | M16 | 80 |
-| CPRO50 | M12 | 60 |
-| CPRO50 | M16 | 80 |
-| CPRO50 | M20 | 100 |
-| CPRO52 | M12 | 60 |
-| CPRO52 | M16 | 80 |
-| CPRO52 | M20 | 100 |
+| ------- | --------- | ------------------------- |
+| CPRO38  | M10       | 50                        |
+| CPRO38  | M12       | 60                        |
+| CPRO38  | M16       | 80                        |
+| CPRO50  | M12       | 60                        |
+| CPRO50  | M16       | 80                        |
+| CPRO50  | M20       | 100                       |
+| CPRO52  | M12       | 60                        |
+| CPRO52  | M16       | 80                        |
+| CPRO52  | M20       | 100                       |
 
 ### Rule
 
@@ -77,6 +70,7 @@ The spacing between any bolt and the end of the bolt group must be at least **5�
 ### Example
 
 Using M16 bolts on CPRO50:
+
 - Minimum spacing = 80mm
 - If Bolt 1 is at 100mm, Bolt 2 must be at ≥ 180mm
 
@@ -86,11 +80,11 @@ Each channel family has minimum and maximum standard lengths.
 
 ### Length Ranges
 
-| Channel Family | Min Length (mm) | Max Length (mm) | Source |
-|----------------|-----------------|-----------------|--------|
-| CPRO38 | 100 | 3050 | ETA Table A3 |
-| CPRO50 | 100 | 3050 | ETA Table A3 |
-| CPRO52 | 150 | 3050 | ETA Table A3 |
+| Channel Family | Min Length (mm) | Max Length (mm) | Source       |
+| -------------- | --------------- | --------------- | ------------ |
+| CPRO38         | 100             | 3050            | ETA Table A3 |
+| CPRO50         | 100             | 3050            | ETA Table A3 |
+| CPRO52         | 150             | 3050            | ETA Table A3 |
 
 ### Standard Variants
 
@@ -98,13 +92,13 @@ Channels come in predefined variants with specific anchor layouts:
 
 **CPRO50 Variants:**
 
-| Variant | Length | Anchors | Anchor Positions (mm) |
-|---------|--------|---------|----------------------|
-| CPRO50-100 | 100mm | 2 | 25, 75 |
-| CPRO50-150 | 150mm | 2 | 25, 125 |
-| CPRO50-200 | 200mm | 2 | 25, 175 |
-| CPRO50-350 | 350mm | 3 | 25, 175, 325 |
-| CPRO50-1050 | 1050mm | 5 | 25, 275, 525, 775, 1025 |
+| Variant     | Length | Anchors | Anchor Positions (mm)   |
+| ----------- | ------ | ------- | ----------------------- |
+| CPRO50-100  | 100mm  | 2       | 25, 75                  |
+| CPRO50-150  | 150mm  | 2       | 25, 125                 |
+| CPRO50-200  | 200mm  | 2       | 25, 175                 |
+| CPRO50-350  | 350mm  | 3       | 25, 175, 325            |
+| CPRO50-1050 | 1050mm | 5       | 25, 275, 525, 775, 1025 |
 
 ## Anchor Spacing Constraints
 
@@ -112,14 +106,14 @@ Anchor spacing varies by variant and must fall within allowed ranges.
 
 ### Spacing Limits
 
-| Channel Family | Min Spacing Smin (mm) | Max Spacing Smax (mm) | Source |
-|----------------|----------------------|----------------------|--------|
-| CPRO38 | 50 | 200 | ETA Table A3 |
-| CPRO50 | 50 | 250 | ETA Table A3 |
-| CPRO52 | 80 | 250 | ETA Table A3 |
+| Channel Family | Min Spacing Smin (mm) | Max Spacing Smax (mm) | Source       |
+| -------------- | --------------------- | --------------------- | ------------ |
+| CPRO38         | 50                    | 200                   | ETA Table A3 |
+| CPRO50         | 50                    | 250                   | ETA Table A3 |
+| CPRO52         | 80                    | 250                   | ETA Table A3 |
 
 <Note>
-Anchor spacing is fixed for each product variant. You cannot change anchor positions — select a variant that suits your application.
+  Anchor spacing is fixed for each product variant. You cannot change anchor positions — select a variant that suits your application.
 </Note>
 
 ## Concrete Member Constraints
@@ -128,14 +122,14 @@ Anchor spacing is fixed for each product variant. You cannot change anchor posit
 
 The concrete member must meet minimum thickness requirements:
 
-| Channel | hmin (mm) | Source |
-|---------|-----------|--------|
-| CPRO38 | 100 | ETA Table B1 |
-| CPRO50 | 130 | ETA Table B1 |
-| CPRO52 | 185 | ETA Table B1 |
+| Channel | hmin (mm) | Source       |
+| ------- | --------- | ------------ |
+| CPRO38  | 100       | ETA Table B1 |
+| CPRO50  | 130       | ETA Table B1 |
+| CPRO52  | 185       | ETA Table B1 |
 
 <Warning>
-Concrete thinner than hmin may not develop full cone breakout capacity. Additional splitting checks apply.
+  Concrete thinner than hmin may not develop full cone breakout capacity. Additional splitting checks apply.
 </Warning>
 
 ### Edge Distances
@@ -152,10 +146,10 @@ ccr,N = 1.5 × hef
 ```
 
 | Channel | hef (mm) | ccr,N (mm) |
-|---------|----------|------------|
-| CPRO38 | 72 | 108 |
-| CPRO50 | 99 | 149 |
-| CPRO52 | 151 | 227 |
+| ------- | -------- | ---------- |
+| CPRO38  | 72       | 108        |
+| CPRO50  | 99       | 149        |
+| CPRO52  | 151      | 227        |
 
 Edges closer than ccr,N reduce concrete capacity.
 
@@ -165,13 +159,13 @@ The concrete condition significantly affects anchor capacity.
 
 ### Cracked vs Uncracked Concrete
 
-| Condition | Description | Effect on Capacity |
-|-----------|-------------|-------------------|
-| **Cracked** | Concrete may have cracks at anchor location | Lower capacity (conservative) |
-| **Uncracked** | Concrete verified to remain uncracked | Higher capacity |
+| Condition     | Description                                 | Effect on Capacity            |
+| ------------- | ------------------------------------------- | ----------------------------- |
+| **Cracked**   | Concrete may have cracks at anchor location | Lower capacity (conservative) |
+| **Uncracked** | Concrete verified to remain uncracked       | Higher capacity               |
 
 <Warning>
-Use "Cracked" unless you can demonstrate the concrete will remain uncracked under all load combinations. Most designs should assume cracked concrete.
+  Use "Cracked" unless you can demonstrate the concrete will remain uncracked under all load combinations. Most designs should assume cracked concrete.
 </Warning>
 
 ### How It Affects Calculations
@@ -179,10 +173,10 @@ Use "Cracked" unless you can demonstrate the concrete will remain uncracked unde
 The cracking condition changes the k-factor used in concrete cone calculations:
 
 | Channel | kcr,N (cracked) | kucr,N (uncracked) |
-|---------|-----------------|-------------------|
-| CPRO38 | 7.8 | 11.1 |
-| CPRO50 | 8.1 | 11.6 |
-| CPRO52 | 8.7 | 12.4 |
+| ------- | --------------- | ------------------ |
+| CPRO38  | 7.8             | 11.1               |
+| CPRO50  | 8.1             | 11.6               |
+| CPRO52  | 8.7             | 12.4               |
 
 Uncracked concrete provides approximately 40% higher concrete cone capacity.
 
@@ -194,39 +188,39 @@ Reinforcement in the concrete member affects several failure mode calculations.
 
 Controls the reinforcement factor (ψre,N) for concrete cone and splitting calculations.
 
-| Option | Effect |
-|--------|--------|
-| **Present** | ψre,N = 1.0 — Full concrete capacity |
+| Option          | Effect                                   |
+| --------------- | ---------------------------------------- |
+| **Present**     | ψre,N = 1.0 — Full concrete capacity     |
 | **Not present** | ψre,N = 0.5 + hef/200 — Reduced capacity |
 
 Without splitting reinforcement, the reinforcement factor reduces capacity:
 
 | Channel | hef (mm) | ψre,N (no reinforcement) |
-|---------|----------|-------------------------|
-| CPRO38 | 72 | 0.86 |
-| CPRO50 | 99 | 1.0 (capped) |
-| CPRO52 | 151 | 1.0 (capped) |
+| ------- | -------- | ------------------------ |
+| CPRO38  | 72       | 0.86                     |
+| CPRO50  | 99       | 1.0 (capped)             |
+| CPRO52  | 151      | 1.0 (capped)             |
 
 ### Edge Reinforcement
 
 Controls the edge breakout capacity for shear loads acting toward edges.
 
-| Option | Effect |
-|--------|--------|
-| **Present** | Higher shear capacity toward edges |
+| Option          | Effect                             |
+| --------------- | ---------------------------------- |
+| **Present**     | Higher shear capacity toward edges |
 | **Not present** | Standard edge breakout calculation |
 
 ### Edge Geometry
 
 When edge reinforcement is present, the geometry affects capacity:
 
-| Option | Description |
-|--------|-------------|
+| Option                          | Description                                     |
+| ------------------------------- | ----------------------------------------------- |
 | **Straight edge with stirrups** | Stirrups provide confinement — highest capacity |
-| **Straight edge (no stirrups)** | Edge reinforcement only — moderate improvement |
+| **Straight edge (no stirrups)** | Edge reinforcement only — moderate improvement  |
 
 <Tip>
-If your concrete has standard reinforcement cages with stirrups near edges, select "Straight edge with stirrups" for more accurate (less conservative) results.
+  If your concrete has standard reinforcement cages with stirrups near edges, select "Straight edge with stirrups" for more accurate (less conservative) results.
 </Tip>
 
 ## Compatible Bolts
@@ -234,10 +228,10 @@ If your concrete has standard reinforcement cages with stirrups near edges, sele
 Not all bolt sizes work with all channels. Use only compatible combinations:
 
 | Channel | Compatible Bolts |
-|---------|------------------|
-| CPRO38 | M10, M12, M16 |
-| CPRO50 | M12, M16, M20 |
-| CPRO52 | M12, M16, M20 |
+| ------- | ---------------- |
+| CPRO38  | M10, M12, M16    |
+| CPRO50  | M12, M16, M20    |
+| CPRO52  | M12, M16, M20    |
 
 ## Load Constraints
 
@@ -249,6 +243,7 @@ Not all bolt sizes work with all channels. Use only compatible combinations:
 ### Load Combinations
 
 Clariti accepts:
+
 - Tension only
 - Shear only
 - Combined tension and shear
@@ -259,24 +254,24 @@ Compression loads (pushing into concrete) are handled separately — the anchor 
 
 Clariti validates all inputs against these constraints:
 
-| Constraint | Validation |
-|------------|------------|
-| Bolt in overhang zone | Error — cannot proceed |
-| Bolt spacing too small | Error — cannot proceed |
-| Member too thin | Warning — splitting check applies |
-| Edge too close | Warning — reduced capacity |
-| Incompatible bolt/channel | Error — cannot proceed |
+| Constraint                | Validation                        |
+| ------------------------- | --------------------------------- |
+| Bolt in overhang zone     | Error — cannot proceed            |
+| Bolt spacing too small    | Error — cannot proceed            |
+| Member too thin           | Warning — splitting check applies |
+| Edge too close            | Warning — reduced capacity        |
+| Incompatible bolt/channel | Error — cannot proceed            |
 
 When constraints are violated, Clariti displays specific error messages explaining the issue and how to resolve it.
 
 ## Summary Table
 
-| Parameter | CPRO38 | CPRO50 | CPRO52 |
-|-----------|--------|--------|--------|
-| Overhang x | 25mm | 25mm | 35mm |
-| Min channel length | 100mm | 100mm | 150mm |
-| Min anchor spacing | 50mm | 50mm | 80mm |
-| Max anchor spacing | 200mm | 250mm | 250mm |
-| Min member thickness | 100mm | 130mm | 185mm |
-| Embedment depth hef | 72mm | 99mm | 151mm |
-| Compatible bolts | M10-M16 | M12-M20 | M12-M20 |
+| Parameter            | CPRO38  | CPRO50  | CPRO52  |
+| -------------------- | ------- | ------- | ------- |
+| Overhang x           | 25mm    | 25mm    | 35mm    |
+| Min channel length   | 100mm   | 100mm   | 150mm   |
+| Min anchor spacing   | 50mm    | 50mm    | 80mm    |
+| Max anchor spacing   | 200mm   | 250mm   | 250mm   |
+| Min member thickness | 100mm   | 130mm   | 185mm   |
+| Embedment depth hef  | 72mm    | 99mm    | 151mm   |
+| Compatible bolts     | M10-M16 | M12-M20 | M12-M20 |
