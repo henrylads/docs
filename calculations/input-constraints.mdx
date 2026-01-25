@@ -51,17 +51,17 @@ When multiple bolts are used, they must maintain minimum spacing from each other
 
 The minimum spacing between adjacent bolts depends on the bolt diameter:
 
-| Channel | Bolt Size | Min Spacing Smin,cbo (mm) |
-| ------- | --------- | ------------------------- |
-| CPRO38  | M10       | 50                        |
-| CPRO38  | M12       | 60                        |
-| CPRO38  | M16       | 80                        |
-| CPRO50  | M12       | 60                        |
-| CPRO50  | M16       | 80                        |
-| CPRO50  | M20       | 100                       |
-| CPRO52  | M12       | 60                        |
-| CPRO52  | M16       | 80                        |
-| CPRO52  | M20       | 100                       |
+| Channel        | Bolt Size | Min Spacing Smin,cbo (mm) |
+| -------------- | --------- | ------------------------- |
+| CPRO38         | M10       | 50                        |
+| CPRO38         | M12       | 60                        |
+| CPRO38         | M16       | 80                        |
+| CPRO50         | M12       | 60                        |
+| CPRO50         | M16       | 80                        |
+| CPRO50         | M20       | 100                       |
+| CPRO52/CPRO52S | M12       | 60                        |
+| CPRO52/CPRO52S | M16       | 80                        |
+| CPRO52/CPRO52S | M20       | 100                       |
 
 ### Rule
 
@@ -85,12 +85,13 @@ Each channel family has minimum and maximum standard lengths.
 | CPRO38         | 100             | 3050            | ETA Table A3 |
 | CPRO50         | 100             | 3050            | ETA Table A3 |
 | CPRO52         | 150             | 3050            | ETA Table A3 |
+| CPRO52S        | 150             | 3050            | ETA Table A3 |
 
 ### Standard Variants
 
 Channels come in predefined variants with specific anchor layouts:
 
-**CPRO50 Variants:**
+**CPRO50 Example Variants:**
 
 | Variant     | Length | Anchors | Anchor Positions (mm)   |
 | ----------- | ------ | ------- | ----------------------- |
@@ -127,6 +128,7 @@ The concrete member must meet minimum thickness requirements:
 | CPRO38  | 100       | ETA Table B1 |
 | CPRO50  | 130       | ETA Table B1 |
 | CPRO52  | 185       | ETA Table B1 |
+| CPRO52S | 135       | ETA Table B1 |
 
 <Warning>
   Concrete thinner than hmin may not develop full cone breakout capacity. Additional splitting checks apply.
@@ -232,6 +234,7 @@ Not all bolt sizes work with all channels. Use only compatible combinations:
 | CPRO38  | M10, M12, M16    |
 | CPRO50  | M12, M16, M20    |
 | CPRO52  | M12, M16, M20    |
+| CPRO52S | M12, M16, M20    |
 
 ## Load Constraints
 
@@ -266,12 +269,12 @@ When constraints are violated, Clariti displays specific error messages explaini
 
 ## Summary Table
 
-| Parameter            | CPRO38  | CPRO50  | CPRO52  |
-| -------------------- | ------- | ------- | ------- |
-| Overhang x           | 25mm    | 25mm    | 35mm    |
-| Min channel length   | 100mm   | 100mm   | 150mm   |
-| Min anchor spacing   | 50mm    | 50mm    | 80mm    |
-| Max anchor spacing   | 200mm   | 250mm   | 250mm   |
-| Min member thickness | 100mm   | 130mm   | 185mm   |
-| Embedment depth hef  | 72mm    | 99mm    | 151mm   |
-| Compatible bolts     | M10-M16 | M12-M20 | M12-M20 |
+| Parameter            | CPRO38  | CPRO50  | CPRO52  | CPRO52S |
+| -------------------- | ------- | ------- | ------- | :------ |
+| Overhang x           | 25mm    | 25mm    | 35mm    | 35mm    |
+| Min channel length   | 100mm   | 100mm   | 150mm   | 150mm   |
+| Min anchor spacing   | 50mm    | 50mm    | 80mm    | 80mm    |
+| Max anchor spacing   | 200mm   | 250mm   | 250mm   | 250mm   |
+| Min member thickness | 100mm   | 130mm   | 185mm   | 135mm   |
+| Embedment depth hef  | 72mm    | 99mm    | 151mm   | 101mm   |
+| Compatible bolts     | M10-M16 | M12-M20 | M12-M20 | M12-M20 |
