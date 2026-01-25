@@ -1,6 +1,6 @@
 ---
-title: Quick Start
-description: Get up and running with Clariti in under 5 minutes
+title: "Quick Start"
+description: "Get up and running with Clariti in under 5 minutes"
 ---
 
 This guide walks you through specifying your first anchor channel connection in Clariti.
@@ -14,63 +14,48 @@ This guide walks you through specifying your first anchor channel connection in 
 ## Your First Specification
 
 <Steps>
+  1. **Log In and Create a Project**
 
-1. **Log In and Create a Project**
+     After logging in, click **New Project** from the dashboard. Give your project a name and description.
+  2. **Create a Design**
 
-   After logging in, click **New Project** from the dashboard. Give your project a name and description.
+     Within your project, create a new design. You'll need to select the product family you want to work with:
+     - CPRO38
+     - CPRO50
+     - CPRO52
+  3. **Define Applied Loads**
 
-2. **Create a Design**
+     Enter the loads applied to the channel:
+     - **Design loads** — tension and/or shear forces
+     - **Number of fixing points** — how many t-bolts in the channel
+  4. **Set Concrete Parameters**
 
-   Within your project, create a new design. You'll need to select the product family you want to work with:
+     Configure your concrete geometry:
+     - **Edge distances** — c₁₁, c₁₂, c₂₁, c₂₂
+     - **Member thickness** — depth of concrete element
 
-   - CPRO38
-   - CPRO50
-   - CPRO52
+     <Tip>
+       Edge distances significantly affect capacity. Clariti will warn you if your geometry causes reductions.
+     </Tip>
+  5. **Set Concrete Strength**
 
-3. **Define Applied Loads**
+     Define the concrete properties:
+     - **Concrete strength class** (e.g., C30/37)
+     - **Concrete condition** — cracked or uncracked
+  6. **Configure Reinforcement Options**
 
-   Enter the loads applied to the channel:
+     Specify the reinforcement in your concrete element:
+     - **Reinforcement density** — widely spaced or closely spaced
+     - **Splitting reinforcement** — present or not
+     - **Edge reinforcement** — present or not
+  7. **Review Calculations**
 
-   - **Design loads** — tension and/or shear forces
-   - **Number of fixing points** — how many anchors in the connection
+     A pop-up will display a summary of your calculation results. To see the full breakdown, click on the **Results** panel at the top of the screen.
+  8. **Export Your Specification**
 
-4. **Set Concrete Parameters**
-
-   Configure your concrete geometry:
-
-   - **Edge distances** — c₁₁, c₁₂, c₂₁, c₂₂
-   - **Member thickness** — depth of concrete element
-
-   <Tip>
-   Edge distances significantly affect capacity. Clariti will warn you if your geometry causes reductions.
-   </Tip>
-
-5. **Set Concrete Strength**
-
-   Define the concrete properties:
-
-   - **Concrete strength class** (e.g., C30/37)
-   - **Concrete condition** — cracked or uncracked
-
-6. **Configure Reinforcement Options**
-
-   Specify the reinforcement in your concrete element:
-
-   - **Reinforcement density** — widely spaced or closely spaced
-   - **Splitting reinforcement** — present or not
-   - **Edge reinforcement** — present or not
-
-7. **Review Calculations**
-
-   A pop-up will display a summary of your calculation results. To see the full breakdown, click on the **Results** panel at the top of the screen.
-
-8. **Export Your Specification**
-
-   Once satisfied, export your work:
-
-   - **PDF Report** — full calculation package for checking/approval
-   - **3D Models** — download directly from the software
-
+     Once satisfied, export your work:
+     - **PDF Report** — full calculation package for checking/approval
+     - **3D Models** — download directly from the software
 </Steps>
 
 ## What's Next?
@@ -79,5 +64,5 @@ This guide walks you through specifying your first anchor channel connection in 
 - [Your First Project](/getting-started/first-project) — Detailed walkthrough of a complete project
 
 <Warning>
-Clariti performs design verification, not detailed design. You remain responsible for ensuring the design is appropriate for your specific application and complies with all relevant codes and standards.
+  Clariti performs design verification, not detailed design. You remain responsible for ensuring the design is appropriate for your specific application and complies with all relevant codes and standards.
 </Warning>
