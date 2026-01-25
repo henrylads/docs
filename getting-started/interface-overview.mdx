@@ -21,33 +21,35 @@ The top bar provides:
 
 The left sidebar contains collapsible input panels:
 
-### Frame Connection
+### Product Selection
 
-- **Frame Fixing Type** — Select connection type (e.g., Cast-in Channel)
-- **Slab Thickness** — Depth of concrete member (mm)
 - **Channel Type** — Filter by channel family (e.g., All Channels)
 
-### Loading
+### Applied Loads
 
-- **Characteristic Load** — Applied load value (kN/m)
-- **Material Type** — Cladding material (e.g., Brick)
+- **Position - **from far left hand side of channel
+- **Tension and shear forces**
 
-### Dimensions
+### Lever Arms
 
-- **Cavity Width** — Distance from structure face (mm)
-- **Run Length** — Length of the bracket run (mm)
-- **Bracket Drop** — Vertical offset of bracket (mm)
+- **Lever Arm Length - **length of arm in mm
+- **Degree of Restraint - **between 1 and 2
 
-### Bracket Options
+### **Concrete Parameters**
 
-Optional parameters for bracket configuration.
+- **Edge Distances - **c11, c12, e21, e22 all in mm. Select infinity by clicking on the ∞ icon.
+- **Member Thickness - **concrete thickness in mm. Select infinity by clicking on the ∞ icon.
+- **Strength Class - **concrete strength e.g. C50/60
+- **Crack Condition: **cracked or uncracked
 
-### Fine Tuning
+### **Reinforcement**
 
-Advanced settings for detailed control.
+- **Reinforcement Density: **dense or widley spaced
+- **Splitting Reinforcement: **Not PresentPresent
+- **Edge Reinforcement Type: **none, straight edge, straight edge with stirups
 
 <Tip>
-  Panels marked "Required" must be completed before running optimization. Optional panels provide additional control when needed.
+  Panels marked "Required" must be completed before running optimization.
 </Tip>
 
 ## 3D Visualization (Center)
@@ -73,10 +75,6 @@ Download 3D models directly from the toolbar:
 
 After running optimization, a popup appears showing:
 
-- **Optimization Complete** — Status indicator
-- **Bracket Centres** — Calculated spacing (mm)
-- **Total Deflection** — Predicted deflection (mm)
-- **Weight per m** — Material usage (kg/m)
 - **Ask AI** — Get AI assistance with your design
 - **View Results** — Open the full results panel
 
@@ -98,7 +96,7 @@ Click **Results** in the top navigation or **View Results** in the popup to see:
 ### Summary
 
 - Overall pass/fail status
-- Utilization percentage
+- Utilisation percentage
 - Key design values
 
 ### Detailed Calculations
