@@ -1,6 +1,6 @@
 ---
-title: Calculations Overview
-description: How Clariti performs EN 1992-4 verification for anchor channels
+title: "Calculations Overview"
+description: "How Clariti performs EN 1992-4 verification for anchor channels"
 ---
 
 This section explains how Clariti calculates anchor channel capacity according to EN 1992-4. Understanding the methodology helps you interpret results and make informed design decisions.
@@ -9,13 +9,13 @@ This section explains how Clariti calculates anchor channel capacity according t
 
 Clariti supports the following cast-in anchor channel systems:
 
-| Channel Family | Description | Anchor Diameter |
-|----------------|-------------|-----------------|
-| **CPRO38** | Light-duty channel | 8mm |
-| **CPRO50** | Medium-duty channel | 10mm |
-| **CPRO52** | Heavy-duty channel | 13mm |
+| Channel Family | Description         |
+| -------------- | ------------------- |
+| **CPRO38**     | Light-duty channel  |
+| **CPRO50**     | Medium-duty channel |
+| **CPRO52**     | Heavy-duty channel  |
 
-All calculations use certified values from **ETA-13/0224**.
+All calculations use certified values from **ETA-25/0222**.
 
 ## Design Philosophy
 
@@ -26,6 +26,7 @@ NRd ≥ NEd
 ```
 
 Where:
+
 - NEd = Factored design load (input by you)
 - NRd = Design resistance (calculated by Clariti)
 
@@ -61,22 +62,22 @@ Per EN 1992-4:2018, anchor channels under tension must be verified against both 
 
 #### Steel Failure Modes (Tension)
 
-| Mode | Description | What It Checks |
-|------|-------------|----------------|
-| **Anchor in tension** | Fracture of anchor shaft | Anchor steel tensile capacity |
-| **Anchor channel connection** | Failure of weld between anchor and channel | Connection strength |
-| **Channel lips** | Local failure of channel lips | Lip bending capacity |
-| **Channel bolt** | Fracture of the T-bolt | Bolt tensile capacity |
-| **Channel in bending** | Flexural failure of channel | Channel bending moment capacity |
+| Mode                          | Description                                | What It Checks                  |
+| ----------------------------- | ------------------------------------------ | ------------------------------- |
+| **Anchor in tension**         | Fracture of anchor shaft                   | Anchor steel tensile capacity   |
+| **Anchor channel connection** | Failure of weld between anchor and channel | Connection strength             |
+| **Channel lips**              | Local failure of channel lips              | Lip bending capacity            |
+| **Channel bolt**              | Fracture of the T-bolt                     | Bolt tensile capacity           |
+| **Channel in bending**        | Flexural failure of channel                | Channel bending moment capacity |
 
 #### Concrete Failure Modes (Tension)
 
-| Mode | Description | When Critical |
-|------|-------------|---------------|
-| **Concrete cone** | Breakout of concrete cone around anchor | Most common governing mode |
-| **Pullout** | Anchor pulls out without full cone formation | Related to bearing area |
-| **Splitting** | Concrete splits due to wedging action | Thin members, close edges |
-| **Blowout** | Side breakout near edges | Anchors close to edges |
+| Mode              | Description                                  | When Critical              |
+| ----------------- | -------------------------------------------- | -------------------------- |
+| **Concrete cone** | Breakout of concrete cone around anchor      | Most common governing mode |
+| **Pullout**       | Anchor pulls out without full cone formation | Related to bearing area    |
+| **Splitting**     | Concrete splits due to wedging action        | Thin members, close edges  |
+| **Blowout**       | Side breakout near edges                     | Anchors close to edges     |
 
 ### Shear Failure Modes
 
@@ -84,18 +85,18 @@ Per EN 1992-4:2018, anchor channels under shear must be verified against both st
 
 #### Steel Failure Modes (Shear)
 
-| Mode | Description | What It Checks |
-|------|-------------|----------------|
-| **Anchor in shear** | Shear fracture of anchor | Anchor shear capacity |
+| Mode                          | Description                    | What It Checks            |
+| ----------------------------- | ------------------------------ | ------------------------- |
+| **Anchor in shear**           | Shear fracture of anchor       | Anchor shear capacity     |
 | **Anchor channel connection** | Failure of connection in shear | Connection shear strength |
-| **Channel bolt** | Shear failure of T-bolt | Bolt shear capacity |
+| **Channel bolt**              | Shear failure of T-bolt        | Bolt shear capacity       |
 
 #### Concrete Failure Modes (Shear)
 
-| Mode | Description | When Critical |
-|------|-------------|---------------|
-| **Concrete edge** | Breakout toward free edge | Loads acting toward edges |
-| **Pryout** | Back-side concrete failure | Short, stiff anchors |
+| Mode              | Description                | When Critical             |
+| ----------------- | -------------------------- | ------------------------- |
+| **Concrete edge** | Breakout toward free edge  | Loads acting toward edges |
+| **Pryout**        | Back-side concrete failure | Short, stiff anchors      |
 
 ### Combined Loading
 
@@ -105,17 +106,17 @@ When both tension and shear act simultaneously, Clariti checks interaction using
 
 Material partial factors from ETA-13/0224:
 
-| Failure Mode | γM | Notes |
-|--------------|------------|-------|
-| Steel — anchor | 1.85 | From ETA |
-| Steel — channel | 1.8 | From ETA |
-| Steel — bolt | 1.87 | From ETA |
-| Concrete cone | 1.5 | Standard |
-| Pullout | 1.5 | Standard |
-| Splitting | 1.5 | Standard |
+| Failure Mode    | γM   | Notes    |
+| --------------- | ---- | -------- |
+| Steel — anchor  | 1.85 | From ETA |
+| Steel — channel | 1.8  | From ETA |
+| Steel — bolt    | 1.87 | From ETA |
+| Concrete cone   | 1.5  | Standard |
+| Pullout         | 1.5  | Standard |
+| Splitting       | 1.5  | Standard |
 
 <Note>
-Clariti uses product-specific γM values from the ETA where available, which may differ from generic EN 1992-4 values.
+  Clariti uses product-specific γM values from the ETA where available, which may differ from generic EN 1992-4 values.
 </Note>
 
 ## Transparency
