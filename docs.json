@@ -9,6 +9,20 @@
   },
   "favicon": "/favicon.png",
   "navigation": {
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Website",
+          "icon": "globe",
+          "href": "https://clariti.site"
+        },
+        {
+          "anchor": "Support",
+          "icon": "envelope",
+          "href": "mailto:support@clariti.site"
+        }
+      ]
+    },
     "tabs": [
       {
         "tab": "Documentation",
@@ -18,8 +32,7 @@
             "pages": [
               "introduction",
               "getting-started/quick-start",
-              "getting-started/interface-overview",
-              "getting-started/first-project"
+              "getting-started/interface-overview"
             ]
           },
           {
@@ -68,21 +81,7 @@
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Website",
-          "href": "https://clariti.site",
-          "icon": "globe"
-        },
-        {
-          "anchor": "Support",
-          "href": "mailto:support@clariti.site",
-          "icon": "envelope"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
     "light": "/logo/light.svg",
