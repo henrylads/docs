@@ -60,23 +60,7 @@
             "pages": [
               "guides/selecting-channel",
               "guides/interpreting-results",
-              "guides/exporting-reports",
-              "guides/best-practices"
-            ]
-          },
-          {
-            "group": "Reference Data",
-            "pages": [
-              "reference/channel-specifications",
-              "reference/product-variants",
-              "reference/material-properties",
-              "reference/load-capacity-tables"
-            ]
-          },
-          {
-            "group": "Glossary",
-            "pages": [
-              "glossary"
+              "guides/exporting-reports"
             ]
           }
         ]
