@@ -1,6 +1,6 @@
 ---
-title: Partial Factors
-description: Complete reference for partial factors used in EN 1992-4 calculations
+title: "Partial Factors"
+description: "Complete reference for partial factors used in EN 1992-4 calculations"
 ---
 
 This page provides a comprehensive reference for all partial factors (γ) used in EN 1992-4 anchor channel calculations.
@@ -26,47 +26,46 @@ Where γM accounts for resistance uncertainties
 
 ### Steel Failure Modes
 
-| Application | Symbol | Recommended | Notes |
-|-------------|--------|-------------|-------|
-| Tension, f<sub>yk</sub> | γ<sub>Ms</sub> | 1.0 | Yield strength basis |
-| Tension, f<sub>uk</sub> | γ<sub>Ms</sub> | 1.2 | Ultimate strength basis |
-| Shear | γ<sub>Ms</sub> | 1.0 | Standard |
-| Combined | γ<sub>Ms</sub> | 1.2 | Conservative |
+| Application             | Symbol         | Recommended | Notes                   |
+| ----------------------- | -------------- | ----------- | ----------------------- |
+| Tension, f<sub>yk</sub> | γ<sub>Ms</sub> | 1.0         | Yield strength basis    |
+| Tension, f<sub>uk</sub> | γ<sub>Ms</sub> | 1.2         | Ultimate strength basis |
+| Shear                   | γ<sub>Ms</sub> | 1.0         | Standard                |
+| Combined                | γ<sub>Ms</sub> | 1.2         | Conservative            |
 
 <Note>
-  Product ETAs may specify different γ<sub>Ms</sub> values. Always check
-  the ETA for the specific product being used.
+  Product ETAs may specify different γ<sub>Ms</sub> values. Always check the ETA for the specific product being used.
 </Note>
 
 ### Concrete Failure Modes
 
-| Failure Mode | Symbol | Recommended | EN 1992-4 Reference |
-|--------------|--------|-------------|---------------------|
-| Concrete cone | γ<sub>Mc</sub> | 1.5 | Table 4.1 |
-| Concrete edge | γ<sub>Mc</sub> | 1.5 | Table 4.1 |
-| Concrete pryout | γ<sub>Mc</sub> | 1.5 | Table 4.1 |
+| Failure Mode    | Symbol         | Recommended | EN 1992-4 Reference |
+| --------------- | -------------- | ----------- | ------------------- |
+| Concrete cone   | γ<sub>Mc</sub> | 1.5         | Table 4.1           |
+| Concrete edge   | γ<sub>Mc</sub> | 1.5         | Table 4.1           |
+| Concrete pryout | γ<sub>Mc</sub> | 1.5         | Table 4.1           |
 
 ### Other Failure Modes
 
-| Failure Mode | Symbol | Recommended | Notes |
-|--------------|--------|-------------|-------|
-| Pullout | γ<sub>Mp</sub> | 1.5 | Product-specific available |
-| Splitting | γ<sub>Msp</sub> | 1.5 | Standard |
-| Blow-out | γ<sub>Mc</sub> | 1.5 | If applicable |
+| Failure Mode | Symbol          | Recommended | Notes                      |
+| ------------ | --------------- | ----------- | -------------------------- |
+| Pullout      | γ<sub>Mp</sub>  | 1.5         | Product-specific available |
+| Splitting    | γ<sub>Msp</sub> | 1.5         | Standard                   |
+| Blow-out     | γ<sub>Mc</sub>  | 1.5         | If applicable              |
 
 ## Complete Factor Table
 
 Reference table for all modes:
 
-| Mode | Characteristic | Partial Factor | Design Resistance |
-|------|---------------|----------------|-------------------|
-| Steel tension | N<sub>Rk,s</sub> | γ<sub>Ms</sub> = 1.2 | N<sub>Rd,s</sub> = N<sub>Rk,s</sub>/1.2 |
-| Concrete cone | N<sub>Rk,c</sub> | γ<sub>Mc</sub> = 1.5 | N<sub>Rd,c</sub> = N<sub>Rk,c</sub>/1.5 |
-| Pullout | N<sub>Rk,p</sub> | γ<sub>Mp</sub> = 1.5 | N<sub>Rd,p</sub> = N<sub>Rk,p</sub>/1.5 |
-| Splitting | N<sub>Rk,sp</sub> | γ<sub>Msp</sub> = 1.5 | N<sub>Rd,sp</sub> = N<sub>Rk,sp</sub>/1.5 |
-| Steel shear | V<sub>Rk,s</sub> | γ<sub>Ms</sub> = 1.0 | V<sub>Rd,s</sub> = V<sub>Rk,s</sub>/1.0 |
-| Concrete edge | V<sub>Rk,c</sub> | γ<sub>Mc</sub> = 1.5 | V<sub>Rd,c</sub> = V<sub>Rk,c</sub>/1.5 |
-| Pryout | V<sub>Rk,cp</sub> | γ<sub>Mc</sub> = 1.5 | V<sub>Rd,cp</sub> = V<sub>Rk,cp</sub>/1.5 |
+| Mode          | Characteristic    | Partial Factor        | Design Resistance                         |
+| ------------- | ----------------- | --------------------- | ----------------------------------------- |
+| Steel tension | N<sub>Rk,s</sub>  | γ<sub>Ms</sub> = 1.2  | N<sub>Rd,s</sub> = N<sub>Rk,s</sub>/1.2   |
+| Concrete cone | N<sub>Rk,c</sub>  | γ<sub>Mc</sub> = 1.5  | N<sub>Rd,c</sub> = N<sub>Rk,c</sub>/1.5   |
+| Pullout       | N<sub>Rk,p</sub>  | γ<sub>Mp</sub> = 1.5  | N<sub>Rd,p</sub> = N<sub>Rk,p</sub>/1.5   |
+| Splitting     | N<sub>Rk,sp</sub> | γ<sub>Msp</sub> = 1.5 | N<sub>Rd,sp</sub> = N<sub>Rk,sp</sub>/1.5 |
+| Steel shear   | V<sub>Rk,s</sub>  | γ<sub>Ms</sub> = 1.0  | V<sub>Rd,s</sub> = V<sub>Rk,s</sub>/1.0   |
+| Concrete edge | V<sub>Rk,c</sub>  | γ<sub>Mc</sub> = 1.5  | V<sub>Rd,c</sub> = V<sub>Rk,c</sub>/1.5   |
+| Pryout        | V<sub>Rk,cp</sub> | γ<sub>Mc</sub> = 1.5  | V<sub>Rd,cp</sub> = V<sub>Rk,cp</sub>/1.5 |
 
 ## Reduction Factors (ψ)
 
@@ -74,22 +73,22 @@ In addition to γ factors, various ψ factors reduce characteristic resistances:
 
 ### Tension ψ Factors
 
-| Factor | Symbol | Purpose | Typical Range |
-|--------|--------|---------|---------------|
-| Edge effect | ψ<sub>s,N</sub> | Edge disturbance | 0.7 - 1.0 |
-| Eccentricity | ψ<sub>ec,N</sub> | Non-uniform loading | 0.5 - 1.0 |
-| Reinforcement | ψ<sub>re,N</sub> | Supplementary steel | 0.5 - 1.0 |
-| Shell spalling | ψ<sub>ucr,N</sub> | Uncracked benefit | 1.0 - 1.4 |
+| Factor         | Symbol            | Purpose             | Typical Range |
+| -------------- | ----------------- | ------------------- | ------------- |
+| Edge effect    | ψ<sub>s,N</sub>   | Edge disturbance    | 0.7 - 1.0     |
+| Eccentricity   | ψ<sub>ec,N</sub>  | Non-uniform loading | 0.5 - 1.0     |
+| Reinforcement  | ψ<sub>re,N</sub>  | Supplementary steel | 0.5 - 1.0     |
+| Shell spalling | ψ<sub>ucr,N</sub> | Uncracked benefit   | 1.0 - 1.4     |
 
 ### Shear ψ Factors
 
-| Factor | Symbol | Purpose | Typical Range |
-|--------|--------|---------|---------------|
-| Edge effect | ψ<sub>s,V</sub> | Perpendicular edge | 0.7 - 1.0 |
-| Thickness | ψ<sub>h,V</sub> | Member depth | 0.7 - 1.0 |
-| Eccentricity | ψ<sub>ec,V</sub> | Non-uniform loading | 0.5 - 1.0 |
-| Direction | ψ<sub>α,V</sub> | Load angle to edge | 0.7 - 1.0 |
-| Reinforcement | ψ<sub>re,V</sub> | Edge reinforcement | 0.7 - 1.0 |
+| Factor        | Symbol           | Purpose             | Typical Range |
+| ------------- | ---------------- | ------------------- | ------------- |
+| Edge effect   | ψ<sub>s,V</sub>  | Perpendicular edge  | 0.7 - 1.0     |
+| Thickness     | ψ<sub>h,V</sub>  | Member depth        | 0.7 - 1.0     |
+| Eccentricity  | ψ<sub>ec,V</sub> | Non-uniform loading | 0.5 - 1.0     |
+| Direction     | ψ<sub>α,V</sub>  | Load angle to edge  | 0.7 - 1.0     |
+| Reinforcement | ψ<sub>re,V</sub> | Edge reinforcement  | 0.7 - 1.0     |
 
 ## National Annex Variations
 
@@ -97,16 +96,15 @@ National Annexes can modify recommended γ<sub>M</sub> values:
 
 ### Typical Variations
 
-| Country | Variation |
-|---------|-----------|
+| Country                    | Variation                     |
+| -------------------------- | ----------------------------- |
 | Germany (DIN EN 1992-4/NA) | Generally follows recommended |
-| UK (BS EN 1992-4/NA) | Follows recommended values |
-| France (NF EN 1992-4/NA) | Some modifications |
-| Spain (UNE EN 1992-4/NA) | Generally follows recommended |
+| UK (BS EN 1992-4/NA)       | Follows recommended values    |
+| France (NF EN 1992-4/NA)   | Some modifications            |
+| Spain (UNE EN 1992-4/NA)   | Generally follows recommended |
 
 <Warning>
-  Always verify applicable National Annex for your project jurisdiction.
-  Clariti uses recommended values by default.
+  Always verify applicable National Annex for your project jurisdiction. Clariti uses recommended values by default.
 </Warning>
 
 ## Product-Specific Factors
@@ -115,11 +113,11 @@ ETAs may specify different factors based on testing:
 
 ### When ETA Values Differ
 
-| Situation | Action |
-|-----------|--------|
+| Situation                | Action                            |
+| ------------------------ | --------------------------------- |
 | ETA γ<sub>M</sub> higher | Use ETA value (more conservative) |
-| ETA γ<sub>M</sub> lower | Use ETA value (test-validated) |
-| No ETA value | Use EN 1992-4 recommended |
+| ETA γ<sub>M</sub> lower  | Use ETA value (test-validated)    |
+| No ETA value             | Use EN 1992-4 recommended         |
 
 Clariti automatically uses product-specific factors when available in the database.
 
@@ -127,11 +125,11 @@ Clariti automatically uses product-specific factors when available in the databa
 
 EN 1990 defines consequence classes affecting reliability:
 
-| Class | Description | γ Modification |
-|-------|-------------|----------------|
-| CC1 | Low consequence | May reduce by ~10% |
-| CC2 | Medium (default) | Standard values |
-| CC3 | High consequence | May increase by ~10% |
+| Class | Description      | γ Modification       |
+| ----- | ---------------- | -------------------- |
+| CC1   | Low consequence  | May reduce by ~10%   |
+| CC2   | Medium (default) | Standard values      |
+| CC3   | High consequence | May increase by ~10% |
 
 Most building applications use CC2. Modification factors K<sub>FI</sub> apply to actions, not resistances.
 
@@ -139,11 +137,11 @@ Most building applications use CC2. Modification factors K<sub>FI</sub> apply to
 
 For corrosion and environmental exposure:
 
-| Exposure | Consideration |
-|----------|---------------|
-| Internal dry | Standard factors |
-| External | Material selection (stainless steel) |
-| Aggressive | Specialist assessment required |
+| Exposure     | Consideration                        |
+| ------------ | ------------------------------------ |
+| Internal dry | Standard factors                     |
+| External     | Material selection (stainless steel) |
+| Aggressive   | Specialist assessment required       |
 
 Durability is typically addressed through material selection rather than factor modification.
 
@@ -151,33 +149,13 @@ Durability is typically addressed through material selection rather than factor 
 
 For fire design situations:
 
-| Parameter | Fire Design |
-|-----------|-------------|
-| γ<sub>M,fi</sub> | Reduced (often 1.0) |
-| Loads | Accidental combination |
-| Resistance | Temperature-reduced |
+| Parameter        | Fire Design            |
+| ---------------- | ---------------------- |
+| γ<sub>M,fi</sub> | Reduced (often 1.0)    |
+| Loads            | Accidental combination |
+| Resistance       | Temperature-reduced    |
 
 Fire design follows EN 1992-1-2. Clariti focuses on ambient temperature design.
-
-## Summary Matrix
-
-Quick reference for typical design:
-
-```
-┌─────────────────────────────────────────────────────────┐
-│                    TENSION                              │
-│  ┌─────────┬─────────┬─────────┬─────────┐            │
-│  │  Steel  │  Cone   │ Pullout │ Split   │            │
-│  │  γ=1.2  │  γ=1.5  │  γ=1.5  │  γ=1.5  │            │
-│  └─────────┴─────────┴─────────┴─────────┘            │
-├─────────────────────────────────────────────────────────┤
-│                     SHEAR                               │
-│  ┌─────────┬─────────┬─────────┐                       │
-│  │  Steel  │  Edge   │ Pryout  │                       │
-│  │  γ=1.0  │  γ=1.5  │  γ=1.5  │                       │
-│  └─────────┴─────────┴─────────┘                       │
-└─────────────────────────────────────────────────────────┘
-```
 
 ## In Clariti
 
@@ -192,6 +170,7 @@ Clariti shows all factors in calculations:
 ### Factor Source
 
 For each factor, Clariti indicates:
+
 - EN 1992-4 reference (recommended values)
 - ETA reference (product-specific values)
 - Which value was used and why

@@ -1,13 +1,13 @@
 ---
-title: EN 1992-4 Overview
-description: Introduction to EN 1992-4 and its application in anchor channel design
+title: "EN 1992-4 Overview"
+description: "Introduction to EN 1992-4 and its application in anchor channel design"
 ---
 
 EN 1992-4 is the European standard governing the design of fastenings for use in concrete. This page provides an overview of the standard and how Clariti implements it.
 
 ## What is EN 1992-4?
 
-**EN 1992-4:2018** (*Design of fastenings for use in concrete*) is a harmonized European standard that defines:
+**EN 1992-4:2018** (_Design of fastenings for use in concrete_) is a harmonized European standard that defines:
 
 - Design methods for concrete fasteners
 - Verification procedures for all failure modes
@@ -22,12 +22,10 @@ The standard covers:
 
 <CardGroup cols={2}>
   <Card title="Cast-in Fasteners" icon="star">
-    Anchor channels, headed studs, and other fasteners placed before concrete
-    is poured. These are Clariti's primary focus.
+    Anchor channels, headed studs, and other fasteners placed before concrete is poured. These are Clariti's primary focus.
   </Card>
   <Card title="Post-installed Fasteners" icon="star">
-    Mechanical anchors, chemical anchors, and undercut anchors installed
-    in hardened concrete.
+    Mechanical anchors, chemical anchors, and undercut anchors installed in hardened concrete.
   </Card>
 </CardGroup>
 
@@ -49,21 +47,16 @@ The standard covers:
 
 EN 1992-4 is organized as follows:
 
-| Section | Content |
-|---------|---------|
-| 1-3 | Scope, references, definitions |
-| 4 | Basis of design |
-| 5 | Determination of action effects |
-| 6 | Cast-in headed fasteners |
-| **7** | **Anchor channels** (primary Clariti reference) |
-| 8 | Post-installed mechanical fasteners |
-| 9 | Post-installed chemical fasteners |
+| Section | Content                                          |
+| ------- | ------------------------------------------------ |
+| 1-3     | Scope, references, definitions                   |
+| 4       | Basis of design                                  |
+| 5       | Determination of action effects                  |
+| 6       | Cast-in headed fasteners                         |
+| **7**   | **Anchor channels** (primary Clariti reference)  |
+| 8       | Post-installed mechanical fasteners              |
+| 9       | Post-installed chemical fasteners                |
 | Annexes | National parameters, seismic provisions, testing |
-
-<Note>
-  Clariti focuses on **Section 7: Anchor channels**. For headed studs and
-  post-installed anchors, refer to Sections 6, 8, and 9 respectively.
-</Note>
 
 ## Design Philosophy
 
@@ -86,13 +79,13 @@ All failure modes must satisfy this inequality.
 ### Serviceability Limit State (SLS)
 
 Verification of:
+
 - Displacement limits
 - Crack width control
 - Durability requirements
 
 <Tip>
-  Clariti primarily addresses ULS verification. SLS checks (deflection,
-  fatigue) may require additional analysis outside the tool.
+  Clariti primarily addresses ULS verification. SLS checks (deflection, fatigue) may require additional analysis outside the tool.
 </Tip>
 
 ## Material Assumptions
@@ -100,26 +93,29 @@ Verification of:
 The standard assumes:
 
 **Concrete:**
+
 - Normal weight concrete (density 2000-2600 kg/m³)
 - Strength classes C12/15 to C90/105
 - Cracked or uncracked state
 
 **Steel:**
+
 - Carbon steel or stainless steel
 - Defined by characteristic yield and ultimate strength
 - Ductility requirements for certain applications
 
 **Grout/Mortar:**
+
 - Where applicable, must meet specified strength requirements
 
 ## Cracked vs. Uncracked Concrete
 
 A critical design assumption:
 
-| Condition | Assumption | When to Use |
-|-----------|------------|-------------|
-| Cracked | k₁ = 8.9 | Default — assume cracking occurs |
-| Uncracked | k₁ = 12.7 | Only when cracking can be reliably excluded |
+| Condition | Assumption | When to Use                                 |
+| --------- | ---------- | ------------------------------------------- |
+| Cracked   | k₁ = 8.9   | Default — assume cracking occurs            |
+| Uncracked | k₁ = 12.7  | Only when cracking can be reliably excluded |
 
 **Uncracked concrete** may be assumed only when:
 
@@ -128,9 +124,7 @@ A critical design assumption:
 - Member is designed to remain uncracked throughout its life
 
 <Warning>
-  Most structural applications should assume cracked concrete. Using
-  uncracked values without justification is unconservative and may not
-  be accepted by checking engineers.
+  Most structural applications should assume cracked concrete. Using uncracked values without justification is unconservative and may not be accepted by checking engineers.
 </Warning>
 
 ## Product Qualification
@@ -158,29 +152,15 @@ Clariti uses the recommended values from the base standard. Check your jurisdict
 
 EN 1992-4 interfaces with:
 
-| Standard | Interface |
-|----------|-----------|
-| EN 1990 | Basis of structural design, load combinations |
-| EN 1991 | Actions on structures (load values) |
-| EN 1992-1-1 | Concrete design (material properties) |
-| EN 1993-1-1 | Steel design (for steel elements) |
-| EN 1998-1 | Seismic design |
+| Standard    | Interface                                     |
+| ----------- | --------------------------------------------- |
+| EN 1990     | Basis of structural design, load combinations |
+| EN 1991     | Actions on structures (load values)           |
+| EN 1992-1-1 | Concrete design (material properties)         |
+| EN 1993-1-1 | Steel design (for steel elements)             |
+| EN 1998-1   | Seismic design                                |
 
 Design loads (N<sub>Ed</sub>, V<sub>Ed</sub>) come from EN 1991 analysis. Clariti focuses on the resistance side per EN 1992-4.
-
-## Key Changes from ETAG 001
-
-If you're familiar with the predecessor ETAG 001:
-
-| Aspect | ETAG 001 | EN 1992-4 |
-|--------|----------|-----------|
-| Status | Guideline | Harmonized standard |
-| Coverage | Separate documents | Single unified standard |
-| Factors | Some differences | Updated γ<sub>M</sub> values |
-| Methods | Equivalent | Refined equations |
-| Reference | Being phased out | Current standard |
-
-Clariti uses EN 1992-4 as the primary reference, with ETAG 001 compatibility for legacy projects where required.
 
 ## Further Reading
 
