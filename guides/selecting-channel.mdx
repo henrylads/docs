@@ -1,6 +1,6 @@
 ---
-title: Selecting a Channel
-description: Guide to choosing the right anchor channel for your application
+title: "Selecting a Channel"
+description: "Guide to choosing the right anchor channel for your application"
 ---
 
 Selecting the appropriate anchor channel involves balancing capacity, cost, material, and practical considerations. This guide helps you make informed choices.
@@ -20,67 +20,37 @@ When choosing an anchor channel, consider:
 ### Review Your Design Loads
 
 From your structural analysis:
+
 - N<sub>Ed</sub> — Design tension (kN)
 - V<sub>Ed</sub> — Design shear (kN)
-- M<sub>Ed</sub> — Design moment (kNm)
 
 ### Account for All Load Cases
 
 Different load combinations may govern:
+
 - Dead + live
 - Dead + wind
 - Seismic combinations
 - Accidental cases
 
 <Tip>
-  Enter all relevant load cases in Clariti. The tool identifies which
-  case governs for each failure mode.
+  Enter all relevant load cases in Clariti. The tool identifies which case governs for each failure mode.
 </Tip>
-
-### Target Utilization
-
-Aim for utilization between 60-85%:
-
-| Utilization | Assessment |
-|-------------|------------|
-| < 50% | Potentially oversized |
-| 50-70% | Good margin, robust design |
-| 70-85% | Efficient, adequate margin |
-| 85-95% | Tight, verify carefully |
-| > 95% | Reconsider, limited margin |
 
 ## Step 2: Match Material to Environment
 
 ### Exposure Classes
 
-| EN 206 Class | Environment | Recommended Material |
-|--------------|-------------|---------------------|
-| XC1 | Dry interior | HDG steel |
-| XC2 | Wet, rarely dry | HDG steel or stainless |
-| XC3 | Moderate humidity | Stainless steel |
-| XC4 | Cyclic wet/dry | Stainless steel |
-| XD/XS | Deicing/marine | High-grade stainless |
-
-### Material Options
-
-**Hot-Dip Galvanized (HDG):**
-- Most economical
-- Good for internal dry conditions
-- Limited corrosion resistance
-
-**Stainless Steel 1.4301 (304):**
-- Good general corrosion resistance
-- Suitable for most exterior applications
-- Moderate cost premium
-
-**Stainless Steel 1.4404 (316):**
-- Superior corrosion resistance
-- Required for marine/chloride exposure
-- Higher cost premium
+| EN 206 Class | Environment       | Recommended Material   |
+| ------------ | ----------------- | ---------------------- |
+| XC1          | Dry interior      | HDG steel              |
+| XC2          | Wet, rarely dry   | HDG steel or stainless |
+| XC3          | Moderate humidity | Stainless steel        |
+| XC4          | Cyclic wet/dry    | Stainless steel        |
+| XD/XS        | Deicing/marine    | High-grade stainless   |
 
 <Warning>
-  Don't mix materials in a connection. Galvanic corrosion occurs when
-  dissimilar metals contact in the presence of moisture.
+  Don't mix materials in a connection. Galvanic corrosion occurs when dissimilar metals contact in the presence of moisture.
 </Warning>
 
 ## Step 3: Check Geometric Compatibility
@@ -88,6 +58,7 @@ Aim for utilization between 60-85%:
 ### Member Thickness
 
 The concrete member must be thick enough for:
+
 - Full embedment depth (h<sub>ef</sub>)
 - Cover to reinforcement
 - Fire protection requirements
@@ -95,15 +66,6 @@ The concrete member must be thick enough for:
 ```
 Required thickness ≥ hef + cover + margin
 ```
-
-### Channel Profile Selection
-
-| Profile Series | Typical h<sub>ef</sub> | Suitable Thickness |
-|----------------|------------------------|-------------------|
-| 28/15 | 32 mm | ≥ 80 mm |
-| 38/23 | 47 mm | ≥ 100 mm |
-| 52/34 | 47 mm | ≥ 100 mm |
-| 72/48 | 63 mm | ≥ 120 mm |
 
 ### Edge Distance Check
 
@@ -116,36 +78,12 @@ If c < ccr,N → Capacity reduced
 
 Channels with larger h<sub>ef</sub> require larger edge distances for full capacity.
 
-## Step 4: Compare Options
-
-### Use Clariti's Product List
-
-After entering your requirements, Clariti displays all compatible products ranked by utilization.
-
-### Comparison Factors
-
-| Factor | Consideration |
-|--------|---------------|
-| Utilization | Lower is more robust |
-| Governing mode | Concrete vs steel limitation |
-| Material | Match to exposure |
-| Cost | Per channel basis |
-| Availability | Lead time in your region |
-
-### Decision Matrix Example
-
-| Product | Utilization | Material | Cost Index | Selection |
-|---------|-------------|----------|------------|-----------|
-| ATA 38/23 HDG | 78% | HDG | 1.0 | Interior only |
-| ATA 38/23 SS | 78% | 1.4301 | 1.8 | Good exterior |
-| CPRO 38/23 SS | 65% | 1.4404 | 2.2 | Premium |
-| CPRO 52/34 SS | 52% | 1.4404 | 2.8 | Oversized |
-
-## Step 5: Verify Selection
+## Step 4: Verify Selection
 
 ### Check All Failure Modes
 
 Don't just look at overall utilization. Review each mode:
+
 - Is one mode much higher than others?
 - Are edge-related modes critical?
 - Is steel or concrete governing?
@@ -153,6 +91,7 @@ Don't just look at overall utilization. Review each mode:
 ### Review Warnings
 
 Clariti flags potential issues:
+
 - Close edge distances
 - Spacing interactions
 - Member thickness concerns
@@ -170,6 +109,7 @@ Clariti flags potential issues:
 ### High Tension, Low Shear
 
 Focus on:
+
 - Concrete cone capacity
 - Embedment depth (larger h<sub>ef</sub> helps)
 - Supplementary reinforcement possibility
@@ -179,6 +119,7 @@ Consider deeper profile channels.
 ### High Shear Toward Edge
 
 Focus on:
+
 - Concrete edge capacity
 - Edge distance (increase if possible)
 - Edge reinforcement
@@ -188,6 +129,7 @@ Consider moving channel away from edge or adding reinforcement.
 ### Combined Loading
 
 Focus on:
+
 - Interaction equation
 - Both tension and shear modes
 - Multiple T-bolts to distribute load
@@ -197,40 +139,7 @@ Consider larger channels or multiple fixings.
 ### Limited Member Depth
 
 Focus on:
+
 - Shallow profile channels
 - Splitting capacity
 - Blow-out potential
-
-ATA 28/15 or similar shallow profiles may be necessary.
-
-## Clariti's AI Recommendation
-
-Click **Optimize** to let Clariti suggest:
-
-### What AI Considers
-
-- Utilization target (70-85%)
-- Material suitability for exposure
-- Common specifications for similar applications
-- Cost efficiency
-
-### When to Override AI
-
-- Standardization needs (use same product throughout)
-- Client/contractor preferences
-- Specific manufacturer requirements
-- Special performance needs
-
-## Summary Checklist
-
-Before finalizing your selection:
-
-- [ ] All load cases checked
-- [ ] Material matches exposure
-- [ ] Profile fits member thickness
-- [ ] Edge distances reviewed
-- [ ] All failure modes acceptable
-- [ ] Interaction check passed
-- [ ] Warnings addressed
-- [ ] Product available in region
-- [ ] Constructability considered

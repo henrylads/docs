@@ -1,6 +1,6 @@
 ---
-title: Interpreting Results
-description: Understanding and acting on Clariti's verification results
+title: "Interpreting Results"
+description: "Understanding and acting on Clariti's verification results"
 ---
 
 Understanding Clariti's results helps you make confident design decisions. This guide explains how to read and interpret the verification output.
@@ -19,44 +19,45 @@ Clariti presents results at three levels:
 
 The primary indicator:
 
-| Status | Meaning | Action |
-|--------|---------|--------|
-| ✓ Pass | All checks satisfied | Proceed to specification |
-| ✗ Fail | One or more checks exceeded | Redesign required |
+| Status | Meaning                     | Action                   |
+| ------ | --------------------------- | ------------------------ |
+| ✓ Pass | All checks satisfied        | Proceed to specification |
+| ✗ Fail | One or more checks exceeded | Redesign required        |
 
 ### Utilization Indicator
 
 The utilization bar shows:
+
 - Percentage of capacity used
 - Color coding (green/yellow/red)
 - Governing mode highlighted
 
 ### Key Metrics
 
-| Metric | What It Shows |
-|--------|---------------|
-| Overall utilization | Highest individual mode |
-| Governing mode | Which failure type controls |
-| Combined utilization | Interaction check result |
+| Metric               | What It Shows               |
+| -------------------- | --------------------------- |
+| Overall utilization  | Highest individual mode     |
+| Governing mode       | Which failure type controls |
+| Combined utilization | Interaction check result    |
 
 ## Mode Breakdown
 
 ### Tension Modes
 
-| Mode | What Fails | Key Factors |
-|------|------------|-------------|
-| Steel failure | Anchor/channel steel | Steel grade, cross-section |
-| Concrete cone | Concrete breakout | h<sub>ef</sub>, f<sub>ck</sub>, edges |
-| Pullout | Anchor bearing | Product-specific, f<sub>ck</sub> |
-| Splitting | Concrete splitting | Thickness, edges, spacing |
+| Mode          | What Fails           | Key Factors                           |
+| ------------- | -------------------- | ------------------------------------- |
+| Steel failure | Anchor/channel steel | Steel grade, cross-section            |
+| Concrete cone | Concrete breakout    | h<sub>ef</sub>, f<sub>ck</sub>, edges |
+| Pullout       | Anchor bearing       | Product-specific, f<sub>ck</sub>      |
+| Splitting     | Concrete splitting   | Thickness, edges, spacing             |
 
 ### Shear Modes
 
-| Mode | What Fails | Key Factors |
-|------|------------|-------------|
-| Steel failure | Shear of steel | Steel grade, diameter |
-| Concrete edge | Breakout to edge | Edge distance, direction |
-| Pryout | Back-face breakout | Embedment depth |
+| Mode          | What Fails         | Key Factors              |
+| ------------- | ------------------ | ------------------------ |
+| Steel failure | Shear of steel     | Steel grade, diameter    |
+| Concrete edge | Breakout to edge   | Edge distance, direction |
+| Pryout        | Back-face breakout | Embedment depth          |
 
 ### Combined Check
 
@@ -64,68 +65,61 @@ Interaction between tension and shear demands.
 
 ## Reading Utilization Values
 
-### Interpreting Percentages
-
-| Utilization | Interpretation |
-|-------------|----------------|
-| 0-50% | Significant reserve capacity |
-| 50-70% | Good design margin |
-| 70-85% | Efficient design |
-| 85-95% | Limited margin, verify carefully |
-| 95-100% | At limit, consider alternatives |
-| > 100% | **Fails** — redesign required |
-
 ### Comparing Modes
 
 Look at the spread between modes:
 
 **Example A — Balanced Design:**
+
 ```
 Steel tension:    45%
 Concrete cone:    68%  ← Governing
 Pullout:          52%
 Splitting:        61%
 ```
+
 All modes similar — well-balanced design.
 
 **Example B — Single Mode Governing:**
+
 ```
 Steel tension:    30%
 Concrete cone:    92%  ← Governing
 Pullout:          35%
 Splitting:        55%
 ```
+
 One mode much higher — design limited by concrete. Consider:
+
 - Larger embedment depth
 - Supplementary reinforcement
 - Higher concrete strength
 
 <Tip>
-  When one mode dominates, address that specific limitation rather
-  than simply selecting a larger channel.
+  When one mode dominates, address that specific limitation rather than simply selecting a larger channel.
 </Tip>
 
 ## Warnings and Alerts
 
 ### Edge Distance Warnings
 
-| Warning | Meaning | Action |
-|---------|---------|--------|
-| c < c<sub>cr</sub> | Edge causes reduction | Accept or increase c |
-| c < c<sub>min</sub> | Below minimum | Must increase c |
+| Warning              | Meaning               | Action               |
+| -------------------- | --------------------- | -------------------- |
+| c \< c<sub>cr</sub>  | Edge causes reduction | Accept or increase c |
+| c \< c<sub>min</sub> | Below minimum         | Must increase c      |
 
 ### Spacing Warnings
 
-| Warning | Meaning | Action |
-|---------|---------|--------|
-| s < s<sub>cr</sub> | Spacing causes reduction | Accept or increase s |
-| s < s<sub>min</sub> | Below minimum | Must increase s |
+| Warning              | Meaning                  | Action               |
+| -------------------- | ------------------------ | -------------------- |
+| s \< s<sub>cr</sub>  | Spacing causes reduction | Accept or increase s |
+| s \< s<sub>min</sub> | Below minimum            | Must increase s      |
 
 ### Member Thickness Warnings
 
-| Warning | Meaning | Action |
-|---------|---------|--------|
-| h < h<sub>min</sub> | Splitting risk | Increase h or verify |
+| Warning              | Meaning        | Action               |
+| -------------------- | -------------- | -------------------- |
+| h \< h<sub>min</sub> | Splitting risk | Increase h or verify |
 
 ## Detailed Calculation View
 
@@ -152,6 +146,7 @@ Click any mode to expand the full calculation.
 ### Tracing Values
 
 Every value shows its source:
+
 - **[Input]** — Your entered value
 - **[ETA]** — Product data from approval
 - **[EN 1992-4]** — Standard reference
@@ -162,19 +157,20 @@ Every value shows its source:
 ### Area Ratios (A<sub>c,N</sub>/A°<sub>c,N</sub>)
 
 Reduced from 1.0 when:
+
 - Edges are close (cone truncated)
 - Multiple anchors (overlapping cones)
 - Shallow members (depth limited)
 
 ### ψ Factors
 
-| Factor | Reduces for |
-|--------|-------------|
-| ψ<sub>s,N</sub> | Close edges |
+| Factor           | Reduces for                    |
+| ---------------- | ------------------------------ |
+| ψ<sub>s,N</sub>  | Close edges                    |
 | ψ<sub>re,N</sub> | No supplementary reinforcement |
-| ψ<sub>ec,N</sub> | Eccentric loading |
-| ψ<sub>h,V</sub> | Shallow members (shear) |
-| ψ<sub>α,V</sub> | Load angle to edge |
+| ψ<sub>ec,N</sub> | Eccentric loading              |
+| ψ<sub>h,V</sub>  | Shallow members (shear)        |
+| ψ<sub>α,V</sub>  | Load angle to edge             |
 
 ### Cumulative Effect
 
@@ -191,11 +187,13 @@ If several factors are low, combined reduction is severe.
 ### Pattern 1: Edge-Limited Design
 
 Symptoms:
+
 - Concrete cone or edge failure governs
 - Low ψ<sub>s</sub> values
 - Warning about edge distances
 
 Solutions:
+
 - Increase edge distance if possible
 - Add edge reinforcement
 - Select deeper embedment channel
@@ -203,11 +201,13 @@ Solutions:
 ### Pattern 2: Steel-Limited Design
 
 Symptoms:
+
 - Steel failure governs
 - High utilization on steel modes
 - Concrete modes have large margin
 
 Solutions:
+
 - Select higher strength channel
 - Use larger profile
 - Consider multiple T-bolts
@@ -215,11 +215,13 @@ Solutions:
 ### Pattern 3: Interaction-Limited Design
 
 Symptoms:
+
 - Individual modes OK
 - Combined check fails
 - Moderate tension + moderate shear
 
 Solutions:
+
 - Distribute loads (multiple T-bolts)
 - Select larger channel
 - Reduce combined loading
@@ -227,11 +229,13 @@ Solutions:
 ### Pattern 4: Splitting-Limited Design
 
 Symptoms:
+
 - Splitting governs
 - Thin member warning
 - Edge or spacing issues
 
 Solutions:
+
 - Increase member thickness
 - Select shallower channel
 - Increase edge distances
@@ -258,31 +262,5 @@ Solutions:
 5. Iterate until satisfactory
 
 <Note>
-  Don't just select larger products blindly. Understanding why a design
-  fails helps you find efficient solutions.
+  Don't just select larger products blindly. Understanding why a design fails helps you find efficient solutions.
 </Note>
-
-## Comparing Load Cases
-
-When multiple load cases are defined:
-
-### Results Table
-
-| Load Case | Governing Mode | Utilization | Status |
-|-----------|----------------|-------------|--------|
-| LC1 | Concrete cone | 75% | ✓ |
-| LC2 | Combined | 92% | ✓ |
-| LC3 | Pryout | 45% | ✓ |
-
-### Identifying Critical Case
-
-- Different cases may govern different modes
-- Overall governing case has highest utilization
-- Design must satisfy ALL cases
-
-### Case-Specific Issues
-
-If only one case fails:
-- Can that load case be revised?
-- Is a local strengthening more efficient?
-- Should the design accommodate all cases equally?
