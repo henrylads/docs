@@ -19,16 +19,17 @@ This guide walks you through specifying your first anchor channel connection in 
      After logging in, click **New Project** from the dashboard. Give your project a name and description.
   2. **Create a Design**
 
-     Within your project, create a new design. You'll need to select the product family you want to work with:
-     - CPRO38
-     - CPRO50
-     - CPRO52
-     - CPRO52S
+     Within your project, create a new design. You'll need to configure the channel:
+     - **Channel Family** — Select from CPRO38, CPRO50, CPRO52, or CPRO52S
+     - **Variant** — Choose the specific channel variant (e.g., CPRO38-1850)
+     - **Bolt Thread Size** — Select bolt size (e.g., M12)
   3. **Define Applied Loads**
 
      Enter the loads applied to the channel:
-     - **Design loads** — tension and/or shear forces
-     - **Number of fixing points** — how many t-bolts in the channel
+     - **Position (mm)** — Distance from the far left end of the channel
+     - **Tension (kN)** — Applied tension force
+     - **Shear (kN)** — Applied shear force
+     - Click **+ Add Load** to add additional load points as needed
   4. **Set Concrete Parameters**
 
      Configure your concrete geometry:
@@ -43,16 +44,33 @@ This guide walks you through specifying your first anchor channel connection in 
      Define the concrete properties:
      - **Concrete strength class** (e.g., C30/37)
      - **Concrete condition** — cracked or uncracked
-  6. **Configure Reinforcement Options**
+  6. **Configure Lever Arm (Optional)**
+
+     If your design includes a lever arm:
+     - **Lever Arm** — Enable or disable lever arm consideration
+     - **Degree of Restraint** — Value between 1 and 2 (1 = pinned, 2 = fully fixed)
+  7. **Configure Reinforcement Options**
 
      Specify the reinforcement in your concrete element:
      - **Reinforcement density** — widely spaced or closely spaced
      - **Splitting reinforcement** — present or not
-     - **Edge reinforcement** — present or not
-  7. **Review Calculations**
+     - **Edge reinforcement** — none, straight edge, or straight edge with stirrups
+  8. **Run Optimization**
 
-     A pop-up will display a summary of your calculation results. To see the full breakdown, click on the **Results** panel at the top of the screen.
-  8. **Export Your Specification**
+     Click the **Run Optimization** button to calculate the optimal design based on your inputs. After entering all required parameters (marked with *), the optimization will run in seconds.
+  9. **Review Calculations**
+
+     A pop-up will display a summary of your calculation results showing:
+     - **Max Tension Utilisation** — Percentage and controlling failure mode
+     - **Max Shear Utilisation** — Percentage and controlling failure mode
+     - **Max Combined Utilisation** — Percentage for combined loading
+     
+     Click **Ask AI** to get AI assistance with understanding your design, or **View Results** to see the full breakdown in the Results panel.
+     
+     <Tip>
+       Use the **Chat** tab at the bottom of the screen to ask the AI assistant questions about your design at any time.
+     </Tip>
+  10. **Export Your Specification**
 
      Once satisfied, export your work:
      - **PDF Report** — full calculation package for checking/approval
